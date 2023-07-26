@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Tetris but it is made by an idiot</title>
+</head>
+
+<body>
+	<div style = "position:fixed;">
+		<canvas oncontextmenu="return false" id="board" width="1280" height="620" style="border:1px solid #000000;"></canvas>
+	</div>
+	<div style = "position:fixed; left:350px;">
+		<div>next</div>
+		<canvas oncontextmenu="return false" id="next" width="1280" height="620" style="border:1px solid #000000;"></canvas>
+		<div>hold</div>
+		<canvas oncontextmenu="return false" id="held" width="1280" height="620" style="border:1px solid #000000;"></canvas>
+		<!--<canvas oncontextmenu="return false" id="settings" width="1280" height="620" style="border:1px solid #000000;"></canvas>-->
+		<div id = "score">0</div>
+	</div>
+	<!--<div id = "highScore">0</div>-->
+	<script src="tetris.js"></script>
+</body>
