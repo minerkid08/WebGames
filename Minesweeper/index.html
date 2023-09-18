@@ -49,15 +49,15 @@
 	<!--<input type="number" id="bCount" name="bombCount"><br><br>-->
 	<button width="200" height="200" onclick="reset()">     reset     <br><br><br></button>
 	<script src="minesweeper.js"></script>
+	<div class="dropdown">
+		<button class="dropbtn">Rule</button>
+		<div class="dropdown-content" >
+			<a onclick="setRule(3)">None</a>
+			<a onclick="setRule(2)">Multiple</a>
+			<a onclick="setRule(1)">Triplets</a>
+		</div>
+	</div><br>
 	<div class="leftPanel">
-		<div class="dropdown">
-			<button class="dropbtn">Rule</button>
-			<div class="dropdown-content" >
-				<a onclick="setRule(3)">None</a>
-				<a onclick="setRule(2)">Multiple</a>
-				<a onclick="setRule(1)">Triplets</a>
-			</div>
-		</div><br>
     	<button onclick="location.href='https://Minerkid08.github.io/WebGames';">Back</button><br>
     	<input type="checkbox" id="drawDif" name="drawDif" value="E">
     	<label for="drawDif"> Draw cell dif</label><br>
