@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>minesweeper</title>
+	<style>
+		.dropbtn {
+			background-color: #04AA6D;
+			color: white;
+			padding: 16px;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+		}
+		.dropdown {
+			position: relative;
+			top: -300px;
+			display: inline-block;
+		}
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			right: 0;
+			background-color: #f9f9f9;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+		.dropdown-content a:hover {background-color: #f1f1f1;}
+		.dropdown:hover .dropdown-content {display: block;}
+		.dropdown:hover .dropbtn {background-color: #3e8e41;}
+	</style>
+</head>
+
+<body>
+	<canvas onmousedown="update(event)" oncontextmenu="return false" id="myCanvas" width="1280" height="620" style="border:1px solid #000000;"></canvas>
+	<canvas id="count" width="1280" height="620" style="border:1px solid #000000;"></canvas>
+	<!--<input type="number" id="size" name="size"><br><br>-->
+	<!--<input type="number" id="bCount" name="bombCount"><br><br>-->
+	<button width="200" height="200" onclick="reset()">     reset     <br><br><br></button>
+	<script src="minesweeper.js"></script>
+	<div class="dropdown">
+		<button class="dropbtn">Rule</button>
+		<div class="dropdown-content" >
+			<a onclick="setRule(3)">None</a>
+			<a onclick="setRule(2)">Multiple</a>
+			<a onclick="setRule(1)">Triplets</a>
+		</div>
+	</div>
+</body>
