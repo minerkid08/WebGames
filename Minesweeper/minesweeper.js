@@ -1,12 +1,12 @@
 try{
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var gridSize = 10;
-var bombCount = 25;
-var negBombCount = 25;
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+let gridSize = 10;
+let bombCount = 25;
+let negBombCount = 25;
 const box = 64;
-var countC = document.getElementById("count");
-var countCtx = countC.getContext("2d");
+let countC = document.getElementById("count");
+let countCtx = countC.getContext("2d");
 //other things
 const Rules = {
 	none: Symbol("none"),
@@ -21,7 +21,7 @@ const Cell = {
 	negmine: Symbol("negmine"),
 	empty: Symbol("empty")
 }
-var rule = Rules.triplets;
+let rule = Rules.triplets;
 function setRule(i){
 	switch(i){
 		case 1:
@@ -39,8 +39,8 @@ function setRule(i){
 	game.draw();
 	game.updateCount();
 }
-//var bCount = document.getElementById("bCount");
-//var size = document.getElementById("size");
+//let bCount = document.getElementById("bCount");
+//let size = document.getElementById("size");
 function reset(){
 	game.start();
 	drawBoard();
@@ -86,7 +86,7 @@ class KeyInput{
 		ctx.strokeRect((this.x*box)+3, (this.y*box)+3, box-6, box-6);
 	}
 }
-var input = new KeyInput();
+let input = new KeyInput();
 window.addEventListener("keydown", function(event){
 	input.event(event);
 }, true);
@@ -105,36 +105,36 @@ class Game{
 		this.win = false;
 		this.loose = false;
 		this.grid = new Array(gridSize);
-		for(var x = 0; x < gridSize; x++){
+		for(let x = 0; x < gridSize; x++){
 			this.grid[x] = new Array(gridSize);
-			for(var y = 0; y < gridSize; y++){
+			for(let y = 0; y < gridSize; y++){
 				this.grid[x][y] = 0
 			}
 		}
 		this.pgrid = new Array(gridSize);
-		for(var x = 0; x < gridSize; x++){
+		for(let x = 0; x < gridSize; x++){
 			this.pgrid[x] = new Array(gridSize);
-			for(var y = 0; y < gridSize; y++){
+			for(let y = 0; y < gridSize; y++){
 				this.pgrid[x][y] = -2;
 			}
 		}
-		for(var i = 0; i < bombCount; i++){
-			var placed = false;
+		for(let i = 0; i < bombCount; i++){
+			let placed = false;
 			while(!placed){
-				var x = Math.floor(Math.random() * gridSize);
-				var y = Math.floor(Math.random() * gridSize);
+				let x = Math.floor(Math.random() * gridSize);
+				let y = Math.floor(Math.random() * gridSize);
 				if(this.grid[x] == null){
 					this.grid[x] = [];
 				}
 				if(this.grid[x][y] != -1){
-					var hasTriplet = false;
+					let hasTriplet = false;
 					if(rule == Rules.triplets){
-						for(var mx = -1; mx < 2; mx++){
+						for(let mx = -1; mx < 2; mx++){
 							if(this.grid[x+mx] == null){
 								this.grid[x+mx] = [];
 							}
 							
-							for(var my = -1; my < 2; my++){
+							for(let my = -1; my < 2; my++){
 								if(mx == 0 && my == 0){continue;}
 								if(!this.valid(x+mx,y+my)){continue;}
 								if(this.grid[x+mx][y+my] == -1){
@@ -153,8 +153,8 @@ class Game{
 					if(!hasTriplet){
 						placed = true;
 						this.grid[x][y] = -1;
-						for(var mx = -1; mx <= 1; mx++){
-							for(var my = -1; my <= 1; my++){
+						for(let mx = -1; mx <= 1; mx++){
+							for(let my = -1; my <= 1; my++){
 								if(mx == 0 && my == 0){
 									continue;
 								}
@@ -177,8 +177,8 @@ class Game{
 				}
 			}
 		}
-		for(var x = 0; x < gridSize; x++){
-			for(var y = 0; y < gridSize; y++){
+		for(let x = 0; x < gridSize; x++){
+			for(let y = 0; y < gridSize; y++){
 				if(this.grid[x][y] == 0){
 					this.btn = 0;
 					this.update(x,y);
@@ -189,8 +189,8 @@ class Game{
 	}
 	update(_x, _y){
 		if(!this.active){return;}
-		var x = Math.floor(this.x/box);
-		var y = Math.floor(this.y/box);
+		let x = Math.floor(this.x/box);
+		let y = Math.floor(this.y/box);
 		if(_x != null){
 			x = _x;
 		}
@@ -202,10 +202,10 @@ class Game{
 				if(this.pgrid[x][y] != 0){
 					if(this.pgrid[x][y] != -2){
 						if(this.pgrid[x][y] != -3){
-							var bomb = 0;
-							var empty = 0;
-							for(var mx = -1; mx < 2; mx++){
-								for(var my = -1; my < 2; my++){
+							let bomb = 0;
+							let empty = 0;
+							for(let mx = -1; mx < 2; mx++){
+								for(let my = -1; my < 2; my++){
 									if(mx == 0 && my == 0){continue;}
 									if(!this.valid(x+mx, y+my)){continue;}
 									if(rule != Rules.multiple){
@@ -216,7 +216,7 @@ class Game{
 											bomb++;
 										}
 									}else{
-										var g = (((x+mx)%2==(y+my)%2) ? 2 : 1);
+										let g = (((x+mx)%2==(y+my)%2) ? 2 : 1);
 										if(this.pgrid[x+mx][y+my] == -2){
 											empty+=g;
 										}
@@ -227,8 +227,8 @@ class Game{
 								}
 							}
 							if(empty + bomb == this.pgrid[x][y]){
-								for(var mx = -1; mx < 2; mx++){
-									for(var my = -1; my < 2; my++){
+								for(let mx = -1; mx < 2; mx++){
+									for(let my = -1; my < 2; my++){
 										if(!this.valid(x+mx, y+my)){continue;}
 										if(this.pgrid[x+mx][y+my] == -2){
 											this.pgrid[x+mx][y+my] = -3;
@@ -238,8 +238,8 @@ class Game{
 								}
 							}
 							if(bomb == this.pgrid[x][y]){
-								for(var mx = -1; mx < 2; mx++){
-									for(var my = -1; my < 2; my++){
+								for(let mx = -1; mx < 2; mx++){
+									for(let my = -1; my < 2; my++){
 										if(!this.valid(x+mx, y+my)){continue;}
 										if(this.pgrid[x+mx][y+my] == -2){
 											this.pgrid[x+mx][y+my] = this.grid[x+mx][y+my];
@@ -285,9 +285,9 @@ class Game{
 	}
 	isDone(){
 		if(!this.loose){
-			var c = 0;
-			for(var x = 0; x < gridSize; x++){
-				for(var y = 0; y < gridSize; y++){
+			let c = 0;
+			for(let x = 0; x < gridSize; x++){
+				for(let y = 0; y < gridSize; y++){
 					if(this.pgrid[x][y] == this.grid[x][y] || this.grid[x][y] == -1){
 						c++;
 					}
@@ -302,8 +302,8 @@ class Game{
 	}
 	reveal(x,y){
 		if(this.pgrid[x][y] != 0){return;}
-		for(var mx = -1; mx <= 1; mx++){
-			for(var my = -1; my <= 1; my++){
+		for(let mx = -1; mx <= 1; mx++){
+			for(let my = -1; my <= 1; my++){
 				if(mx == 0 && my == 0){
 					continue;
 				}
@@ -320,13 +320,13 @@ class Game{
 		}
 	}
 	draw(){
-		for(var x = 0; x < gridSize; x++){
-			for(var y = 0; y < gridSize; y++){
-				var b = 0;
-				var e = 0;
-				var mb = 0;
-				for(var mx = -1; mx < 2; mx++){
-					for(var my = -1; my < 2; my++){
+		for(let x = 0; x < gridSize; x++){
+			for(let y = 0; y < gridSize; y++){
+				let b = 0;
+				let e = 0;
+				let mb = 0;
+				for(let mx = -1; mx < 2; mx++){
+					for(let my = -1; my < 2; my++){
 						if(mx == 0 && my == 0){continue;}
 						if(this.valid(x+mx,y+my)){
 							if(this.pgrid[x+mx][y+my] == -3){
@@ -355,13 +355,16 @@ class Game{
 				}else{
 					ctx.fillStyle = "#000000";
 				}
+                let drawDif = document.getElementByName("drawDif").value;
 				ctx.fillText(
 					(this.pgrid[x][y] == -2 ? " " : 
 					(this.pgrid[x][y] == -1 ? "B" : 
 					(this.pgrid[x][y] == -3 ? "F" : 
 					(this.pgrid[x][y] == -4 ? "X" :
-					this.pgrid[x][y]
-					)))).toString(),(box*x)+box/4,(box*(y+1)-box/4));
+					(drawDif ? this.pgrid[x][y] - b : 
+                    this.pgrid[x][y]
+                    ))))).toString(),(box*x)+box/4,(box*(y+1)-box/4)
+                );
 			}
 		}
         input.draw();
@@ -379,15 +382,15 @@ class Game{
 		countC.width = 40 * this.b.toString().length;
 		countC.height = 40;
 		countCtx.font = "40px Courier New";
-		var stg = this.b.toString();
-		for(var i = 0; i < stg.length; i++){
+		let stg = this.b.toString();
+		for(let i = 0; i < stg.length; i++){
 			countCtx.strokeRect(i*40,0,40,40);
 			countCtx.fillText(stg.charAt(i),(40*i)+5,35);
 		}
 	}
 	revealMap(){
-		for(var x = 0; x < gridSize; x++){
-			for(var y = 0; y < gridSize; y++){
+		for(let x = 0; x < gridSize; x++){
+			for(let y = 0; y < gridSize; y++){
 				if(this.win){
 					if(this.pgrid[x][y] == -3){continue;}
 					this.pgrid[x][y] = this.grid[x][y];
@@ -402,7 +405,7 @@ class Game{
 		}
 	}
 }
-var game = new Game();
+let game = new Game();
 game.start();
 game.updateCount();
 function update(event){
