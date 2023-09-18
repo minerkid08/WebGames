@@ -322,40 +322,36 @@ class Game{
 	draw(){
 		for(var x = 0; x < gridSize; x++){
 			for(var y = 0; y < gridSize; y++){
-				if(this.pgrid[x][y] > -1){
-					var b = 0;
-					var e = 0;
-					var mb = 0;
-					for(var mx = -1; mx < 2; mx++){
-						for(var my = -1; my < 2; my++){
-							if(mx == 0 && my == 0){continue;}
-							if(this.valid(x+mx,y+my)){
-								if(this.pgrid[x+mx][y+my] == -3){
-									b++;
-								}
-								if(this.pgrid[x+mx][y+my] == -2){
-									e++;
-								}
-								if(this.pgrid[x+mx][y+my] == -3){
-									if((x+mx)%2 == (y+my)%2){
-										mb+=2;
-									}else{
-										mb++;
-									}
+				var b = 0;
+				var e = 0;
+				var mb = 0;
+				for(var mx = -1; mx < 2; mx++){
+					for(var my = -1; my < 2; my++){
+						if(mx == 0 && my == 0){continue;}
+						if(this.valid(x+mx,y+my)){
+							if(this.pgrid[x+mx][y+my] == -3){
+								b++;
+							}
+							if(this.pgrid[x+mx][y+my] == -2){
+								e++;
+							}
+							if(this.pgrid[x+mx][y+my] == -3){
+								if((x+mx)%2 == (y+my)%2){
+									mb+=2;
+								}else{
+									mb++;
 								}
 							}
 						}
 					}
-					if(
-                        (
-                            ((rule == Rules.multiple ? mb : b) == this.pgrid[x][y]) ||
-                            this.pgrid[x][y] == -3
-                        ) && e == 0
-                    ){
-						ctx.fillStyle = "#808080";
-					}else{
-						ctx.fillStyle = "#000000";
-					}
+				}
+				if(
+                    (
+                        ((rule == Rules.multiple ? mb : b) == this.pgrid[x][y]) ||
+                        this.pgrid[x][y] == -3
+                    ) && e == 0
+                ){
+					ctx.fillStyle = "#808080";
 				}else{
 					ctx.fillStyle = "#000000";
 				}
