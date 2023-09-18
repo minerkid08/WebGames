@@ -346,7 +346,7 @@ class Game{
 							}
 						}
 					}
-					if(((rule == Rules.multiple ? mb : b) == this.pgrid[x][y] && e == 0) || (this.pgrid[x][y] == -3 && b + e == 8)){
+					if(((rule == Rules.multiple ? mb : b) == this.pgrid[x][y] && e == 0) || (this.pgrid[x][y] == -3 && e == 0)){
 						ctx.fillStyle = "#808080";
 					}else{
 						ctx.fillStyle = "#000000";
