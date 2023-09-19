@@ -355,7 +355,7 @@ class Game{
 				}else{
 					ctx.fillStyle = "#000000";
 				}
-                let drawDif = document.getElementById("drawDif").value;
+                let drawDif = document.getElementsByName("drawDif")[0].checked;
 				ctx.fillText(
 					(this.pgrid[x][y] == -2 ? " " : 
 					(this.pgrid[x][y] == -1 ? "B" : 
