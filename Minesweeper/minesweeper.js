@@ -365,7 +365,7 @@ class Game{
 					(this.pgrid[x][y] == -1 ? "B" : 
 					(this.pgrid[x][y] == -3 ? "F" : 
 					(this.pgrid[x][y] == -4 ? "X" :
-					(checked ? this.pgrid[x][y] - b : 
+					(checked ? this.pgrid[x][y] - mb : 
                     this.pgrid[x][y]
                     ))))).toString(),(box*x)+box/4,(box*(y+1)-box/4)
                 );
