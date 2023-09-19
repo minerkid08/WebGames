@@ -355,13 +355,17 @@ class Game{
 				}else{
 					ctx.fillStyle = "#000000";
 				}
-                let drawDif = document.getElementsByName("drawDif")[0].checked;
+                let drawDif = document.getElementsByName("drawDif")[0];
+                let checked = false;
+                if(drawDif != null){
+                    checked = drawDif.checked;
+                }
 				ctx.fillText(
 					(this.pgrid[x][y] == -2 ? " " : 
 					(this.pgrid[x][y] == -1 ? "B" : 
 					(this.pgrid[x][y] == -3 ? "F" : 
 					(this.pgrid[x][y] == -4 ? "X" :
-					(drawDif ? this.pgrid[x][y] - b : 
+					(checked ? this.pgrid[x][y] - b : 
                     this.pgrid[x][y]
                     ))))).toString(),(box*x)+box/4,(box*(y+1)-box/4)
                 );
