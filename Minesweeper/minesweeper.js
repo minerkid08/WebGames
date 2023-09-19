@@ -4,7 +4,7 @@ let ctx = canvas.getContext("2d");
 let gridSize = 10;
 let bombCount = 25;
 let negBombCount = 25;
-const box = 64;
+let box = 64;
 let countC = document.getElementById("count");
 let countCtx = countC.getContext("2d");
 //other things
@@ -34,14 +34,14 @@ function setRule(i){
 			rule = Rules.none;
 			break;
 	}
-	game.start();
-	drawBoard();
-	game.draw();
-	game.updateCount();
+    reset();
 }
 //let bCount = document.getElementById("bCount");
 //let size = document.getElementById("size");
 function reset(){
+    gridSize = parseInt(document.getElementById("gridSize").value);
+    bombCount = parseInt(document.getElementById("bombCount").value);
+    box = canvas.width / gridSize;
 	game.start();
 	drawBoard();
 	game.draw();
