@@ -79,6 +79,18 @@ class KeyInput{
 				game.update();
 				break;
 		}
+        if(this.x < 0){
+            this.x = 0;
+        }
+        if(this.x >= gridSize){
+            this.x = gridSize;
+        }
+        if(this.y < 0){
+            this.y = 0;
+        }
+        if(this.y >= gridSize){
+            this.y = gridSize;
+        }
 		drawGame();
 	}
 	draw(){
@@ -96,7 +108,7 @@ class Game{
 		canvas.height = box * gridSize;
 		ctx.font = box+"px Courier New";
 		countC.style.left = "8px";
-		countC.style.top = gridSize*(box+1)-2+"px";
+		countC.style.top = 10*(box+1)-2+"px";
 		countC.style.position = "absolute";
 		countC.width = box;
 		countC.height = box;
