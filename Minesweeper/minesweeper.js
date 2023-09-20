@@ -108,7 +108,7 @@ class Game{
 		canvas.height = box * gridSize;
 		ctx.font = box+"px Courier New";
 		countC.style.left = "8px";
-		countC.style.top = 10*(box+1)-2+"px";
+		countC.style.top = 10*(64+1)-2+"px";
 		countC.style.position = "absolute";
 		countC.width = box;
 		countC.height = box;
