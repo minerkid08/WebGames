@@ -82,14 +82,14 @@ class KeyInput{
         if(this.x < 0){
             this.x = 0;
         }
-        if(this.x >= gridSize){
-            this.x = gridSize;
+        if(this.x >= gridSize-1){
+            this.x = gridSize-1;
         }
         if(this.y < 0){
             this.y = 0;
         }
-        if(this.y >= gridSize){
-            this.y = gridSize;
+        if(this.y >= gridSize-1){
+            this.y = gridSize-1;
         }
 		drawGame();
 	}
