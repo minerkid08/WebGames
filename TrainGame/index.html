@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>tren gem</title>
+</head>
+
+<body>
+	<div style = "position:fixed;">
+		<canvas onmousedown="mouseClick(event)"oncontextmenu="return false" id="board" width="1088" height="576" style="border:1px solid #000000;"></canvas>
+		<div id="money">u poor lol</div>
+		<canvas onmousedown="clickContracts(event)"oncontextmenu="return false"id="contracts" width="320" height="320" style = "position:fixed; left:1100px; top:10px; border:1px solid #000000;" ></canvas>
+		<canvas onmousedown="return;"oncontextmenu="return false"id="edit" width="320" height="320" style = "position:fixed; left:1100px; top:330px; border:1px solid #000000;" ></canvas>
+	</div>
+	<div id = "images" hidden="hidden">
+		<img src = "rail0.png" width = "32" height = "32" id = "straightRail0">
+		<img src = "rail1.png" width = "32" height = "32" id = "straightRail1">
+		<img src = "rail2.png" width = "32" height = "32" id = "straightRail2">
+		<img src = "rail3.png" width = "32" height = "32" id = "straightRail3">
+		<img src = "rail4.png" width = "32" height = "32" id = "straightRail4">
+		<img src = "rail5.png" width = "32" height = "32" id = "straightRail5">
+		<img src = "rail6.png" width = "32" height = "32" id = "straightRail6">
+		<img src = "rail7.png" width = "32" height = "32" id = "straightRail7">
+	</div>
+	<script src="game2.js"></script>
+</body>

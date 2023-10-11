@@ -361,7 +361,7 @@ class Game{
                     (
                         ((rule == Rules.multiple ? mb : b) == this.pgrid[x][y]) ||
                         this.pgrid[x][y] == -3
-                    ) && e == 0
+                    ) && e == 0 || this.win
                 ){
 					ctx.fillStyle = "#808080";
 				}else{
