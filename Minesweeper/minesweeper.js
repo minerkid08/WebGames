@@ -68,15 +68,11 @@ class KeyInput{
 				break;
 			case "Shift":
 				game.btn = 0;
-				game.x = this.x * box;
-				game.y = this.y * box;
-				game.update();
+				game.update(this.x, this.y);
 				break;
 			case "Control":
 				game.btn = 1;
-				game.x = this.x * box;
-				game.y = this.y * box; 
-				game.update();
+				game.update(this.x, this.y);
 				break;
 		}
         if(this.x < 0){
