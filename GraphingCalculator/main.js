@@ -1,3 +1,4 @@
+try{
 import {parse, tokenize} from "./parser.js";
 function update(){
     alert("run");
@@ -7,4 +8,7 @@ function update(){
     let terms = tokenize(text);
     let out = parse(terms);
     alert(out);
+}
+}catch(e){
+    alert(e);
 }

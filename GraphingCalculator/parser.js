@@ -32,7 +32,7 @@ export function tokenize(text){
     }
     return terms;
 }
-export function parse(terms, vars){
+export function parse(terms){
     let buf = 0;
     if(terms[0].type == "num"){
         buf = terms[0].value;
