@@ -47,7 +47,6 @@ try{
                             break;
                         }
                     }
-                    alert("var '" + num + "'");
                     let term = new Var();
                     term.value = num;
                     terms[terms.length] = term;
@@ -69,7 +68,6 @@ try{
                 terms[terms.length] = term;
             }
         }
-        alert("parsed");
         return terms;
     }
     let rtn = 0;
@@ -129,7 +127,6 @@ try{
         return buf;
     }
     function update(){
-        alert("run");
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,canvas.width, canvas.height);
