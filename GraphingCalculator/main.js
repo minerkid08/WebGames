@@ -62,11 +62,11 @@ try{
         let buf = 0;
         if(terms[0].type == "num"){
             buf = terms[0].value;
-        }else if(term2.type == "var"){
-            if(term2.value == "x"){
+        }else if(terms[0].type == "var"){
+            if(terms[0].value == "x"){
                 num = x;
             }
-            alert(term2.value);
+            alert(terms[0].value);
         }
         for(let i = 1; i < terms.length; i++){
             let term = terms[i];
