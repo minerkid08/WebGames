@@ -73,8 +73,7 @@ try{
         return terms;
     }
     let rtn = 0;
-    function parse(terms, x, _start){
-        let start = _start === null ? 0 : _start;
+    function parse(terms, x, start){
         let buf = 0;
         if(terms[start].type == "num"){
             buf = terms[start].value;
@@ -138,7 +137,7 @@ try{
         let text = textBox.value;
         let terms = tokenize(text);
         for(let x = 0; x < 11; x++){
-            let out = parse(terms, x);
+            let out = parse(terms, x, 0);
             ctx.beginPath();
             ctx.arc(x/10 * canvas.width, out/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
