@@ -101,7 +101,11 @@ try{
             ctx.arc(x/10 * canvas.width, out/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
             ctx.fill();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#003300';
+            ctx.stroke();
         }
+        alert(out);
     }
 }catch(e){
     alert(e);
