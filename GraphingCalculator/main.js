@@ -29,6 +29,17 @@ try{
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
             }
+            if(char.toLowerCase() != char.toUpperCase()){
+                let num = "";
+                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
+                    num = num + char;
+                    i++;
+                    char = text[i];
+                }
+                let term = new Var();
+                term.value = num;
+                terms[terms.length] = term;
+            }
             if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
                 term.expr = char;
