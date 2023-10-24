@@ -36,6 +36,9 @@ try{
                         num = num + char;
                         i++;
                         char = text[i];
+                        if(char == " "){
+                            break;
+                        }
                         if(char === undefined){
                             break;
                         }
