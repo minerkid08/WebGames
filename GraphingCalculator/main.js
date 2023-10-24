@@ -109,5 +109,6 @@ try{
         alert(out);
     }
 }catch(e){
+    alert(":(");
     alert(e);
 }
