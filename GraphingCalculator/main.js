@@ -79,6 +79,11 @@ try{
             if(terms[start].value == "x"){
                 buf = x;
             }
+        }else if(term2.type == "paran"){
+            if(term2.open){
+                num = parse(terms, x, i + 1);
+                i = rtn;
+            }
         }
         for(let i = start + 1; i < terms.length; i++){
             let term = terms[i];
