@@ -79,10 +79,10 @@ try{
             if(terms[start].value == "x"){
                 buf = x;
             }
-        }else if(term2.type == "paran"){
-            if(term2.open){
-                buf = parse(terms, x, i + 1);
-                i = rtn;
+        }else if(terms[start].type == "paran"){
+            if(terms[start].open){
+                buf = parse(terms, x, start + 1);
+                start = rtn;
             }
         }
         for(let i = start + 1; i < terms.length; i++){
