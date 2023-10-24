@@ -46,9 +46,10 @@ try{
                 terms[terms.length] = term;
             }
         }
+        alert("parsed");
         return terms;
     }
-    function parse(terms, vars){
+    function parse(terms, x){
         let buf = 0;
         if(terms[0].type == "num"){
             buf = terms[0].value;
@@ -62,8 +63,8 @@ try{
                 if(term2.type == "num"){
                     num = term2.value;
                 }else if(term2.type == "var"){
-                    if(vars[term2.value]){
-                        num = vars[term2.value];
+                    if(term2.value == "x"){
+                        num = x;
                     }
                 }else{  
                     alert("expected number, got " + term2.type + " , " + term2.expr);
