@@ -69,10 +69,23 @@ try{
         return buf;
     }
     function update(){
+        let canvas = document.getElementById("graph");
+        let ctx = canvas.getContext("2d");
+        ctx.clearRect(0,0,canvas.width, canvas.height);
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
         let out = parse(terms);
+        for(let x = 0; x < 11; x++){
+            let out = parse(terms);
+            ctx.beginPath();
+            ctx.arc(x/10 * canvas.width, out/10 * canvas.height, 10, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'green';
+            ctx.fill();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#003300';
+            ctx.stroke();
+        }
         alert(out);
     }
 }catch(e){
