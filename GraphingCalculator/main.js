@@ -95,7 +95,7 @@ try{
                         num = x;
                     }
                 }else if(term2.type == "paran"){
-                    alert(terms[i + 1]);
+                    alert(terms[i + 1].value);
                     return 3;
                     if(term2.open){
                         num = parse(terms, x, i + 1);
