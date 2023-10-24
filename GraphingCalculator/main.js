@@ -74,6 +74,7 @@ try{
                     if(term2.value == "x"){
                         num = x;
                     }
+                    alert(term2.value);
                 }else{  
                     alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
