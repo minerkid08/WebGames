@@ -64,9 +64,8 @@ try{
             buf = terms[0].value;
         }else if(terms[0].type == "var"){
             if(terms[0].value == "x"){
-                num = x;
+                buf = x;
             }
-            alert(terms[0].value);
         }
         for(let i = 1; i < terms.length; i++){
             let term = terms[i];
@@ -80,7 +79,6 @@ try{
                     if(term2.value == "x"){
                         num = x;
                     }
-                    alert(term2.value);
                 }else{  
                     alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
