@@ -7,6 +7,10 @@ try{
         type = "num";
         value = 0;
     }
+    class Var{
+        type = "var";
+        value = "";
+    }
     function tokenize(text){
         let terms = [];
         for(let i = 0; i < text.length; i++){
@@ -33,7 +37,7 @@ try{
         }
         return terms;
     }
-    function parse(terms){
+    function parse(terms, vars){
         let buf = 0;
         if(terms[0].type == "num"){
             buf = terms[0].value;
@@ -46,6 +50,10 @@ try{
                 let num = 0;
                 if(term2.type == "num"){
                     num = term2.value;
+                }else if(term2.type == "var"){
+                    if(vars[term2.value]){
+                        num = vars[term2.value];
+                    }
                 }else{  
                     console.log("expected number, got " + term2.type + " , " + term2.expr);
                 }
@@ -77,16 +85,12 @@ try{
         let terms = tokenize(text);
         let out = parse(terms);
         for(let x = 0; x < 11; x++){
-            let out = parse(terms);
+            let out = parse(terms, {x: x});
             ctx.beginPath();
             ctx.arc(x/10 * canvas.width, out/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
             ctx.fill();
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#003300';
-            ctx.stroke();
         }
-        alert(out);
     }
 }catch(e){
     alert(e);
