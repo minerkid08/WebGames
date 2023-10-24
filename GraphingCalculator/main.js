@@ -29,16 +29,21 @@ try{
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
             }
-            if(char.toLowerCase() != char.toUpperCase()){
-                let num = "";
-                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
-                    num = num + char;
-                    i++;
-                    char = text[i];
+            if(char !== undefined){
+                if(char.toLowerCase() != char.toUpperCase()){
+                    let num = "";
+                    while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
+                        num = num + char;
+                        i++;
+                        char = text[i];
+                        if(char === undefined){
+                            break;
+                        }
+                    }
+                    let term = new Var();
+                    term.value = num;
+                    terms[terms.length] = term;
                 }
-                let term = new Var();
-                term.value = num;
-                terms[terms.length] = term;
             }
             if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
@@ -96,7 +101,6 @@ try{
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
-        let out = parse(terms, 1);
         for(let x = 0; x < 11; x++){
             let out = parse(terms, x);
             ctx.beginPath();
@@ -107,7 +111,6 @@ try{
             ctx.strokeStyle = '#003300';
             ctx.stroke();
         }
-        alert(out);
     }
 }catch(e){
     alert(":(");
