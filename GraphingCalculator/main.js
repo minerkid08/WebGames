@@ -94,13 +94,13 @@ try{
                     if(term2.value == "x"){
                         num = x;
                     }
-                else if(term2.type == "paran"){
+                }else if(term2.type == "paran"){
                     if(term2.open){
                         num = parse(terms, x, i + 1);
                         i = rtn;
                     }
                 }
-                }else{  
+                else{  
                     alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
                 if(term.expr == "+"){
