@@ -11,6 +11,10 @@ try{
         type = "var";
         value = "";
     }
+    class Paran{
+        type = "paran";
+        open = false;
+    }
     function tokenize(text){
         let terms = [];
         for(let i = 0; i < text.length; i++){
@@ -54,20 +58,32 @@ try{
                 term.expr = char;
                 terms[terms.length] = term;
             }
+            if(char == "("){
+                let term = new Paran();
+                term.open = true;
+                terms[terms.length] = term;
+            }
+            if(char == ")"){
+                let term = new Paran();
+                term.open = false;
+                terms[terms.length] = term;
+            }
         }
         alert("parsed");
         return terms;
     }
-    function parse(terms, x){
+    let rtn = 0;
+    function parse(terms, x, _start){
+        let start = _start === null ? 0 : _start;
         let buf = 0;
-        if(terms[0].type == "num"){
-            buf = terms[0].value;
-        }else if(terms[0].type == "var"){
-            if(terms[0].value == "x"){
+        if(terms[start].type == "num"){
+            buf = terms[start].value;
+        }else if(terms[start].type == "var"){
+            if(terms[start].value == "x"){
                 buf = x;
             }
         }
-        for(let i = 1; i < terms.length; i++){
+        for(let i = start + 1; i < terms.length; i++){
             let term = terms[i];
             if(term.type == "expr"){
                 i++;
@@ -79,6 +95,12 @@ try{
                     if(term2.value == "x"){
                         num = x;
                     }
+                else if(term2.type == "paran"){
+                    if(term2.open){
+                        num = parse(terms, x, i + 1);
+                        i = rtn;
+                    }
+                }
                 }else{  
                     alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
@@ -96,6 +118,12 @@ try{
                 }
                 if(term.expr == "^"){
                     buf = Math.pow(buf, num);
+                }
+            }
+            if(term.type == "paran"){
+                if(term.open == false){
+                    return buf;
+                    rtn = i + 1;
                 }
             }
         }
