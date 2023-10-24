@@ -82,7 +82,7 @@ try{
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, x, start + 1);
-                start = rtn;
+                start = rtn - 1;
             }
         }
         for(let i = start + 1; i < terms.length; i++){
