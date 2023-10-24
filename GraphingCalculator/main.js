@@ -43,7 +43,7 @@ try{
                             break;
                         }
                     }
-                    alert("var " + num);
+                    alert("var '" + num + "'");
                     let term = new Var();
                     term.value = num;
                     terms[terms.length] = term;
