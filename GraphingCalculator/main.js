@@ -95,8 +95,6 @@ try{
                         num = x;
                     }
                 }else if(term2.type == "paran"){
-                    alert(terms[i + 1].value);
-                    return 3;
                     if(term2.open){
                         num = parse(terms, x, i + 1);
                         i = rtn;
@@ -123,8 +121,8 @@ try{
             }
             if(term.type == "paran"){
                 if(term.open == false){
-                    return buf;
                     rtn = i + 1;
+                    return buf;
                 }
             }
         }
