@@ -81,7 +81,7 @@ try{
             }
         }else if(term2.type == "paran"){
             if(term2.open){
-                num = parse(terms, x, i + 1);
+                buf = parse(terms, x, i + 1);
                 i = rtn;
             }
         }
