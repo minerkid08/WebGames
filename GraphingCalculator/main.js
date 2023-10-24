@@ -66,7 +66,7 @@ try{
                         num = vars[term2.value];
                     }
                 }else{  
-                    console.log("expected number, got " + term2.type + " , " + term2.expr);
+                    alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
                 if(term.expr == "+"){
                     buf = buf + num;
