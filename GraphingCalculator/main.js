@@ -141,7 +141,7 @@ try{
         for(let x = -5; x < 6; x++){
             let out = parse(terms, x, 0);
             ctx.beginPath();
-            ctx.arc((x + 5)/10 * canvas.width, (out + 5)/10 * canvas.height, 10, 0, 2 * Math.PI, false);
+            ctx.arc((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
             ctx.fill();
             ctx.lineWidth = 5;
