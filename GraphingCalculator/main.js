@@ -103,7 +103,7 @@ try{
                         i = rtn;
                     }
                 }
-                else{  
+                else{
                     alert("expected number, got " + term2.type + " , " + term2.expr);
                 }
                 if(term.expr == "+"){
@@ -138,10 +138,10 @@ try{
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
-        for(let x = 0; x < 11; x++){
+        for(let x = -5; x < 6; x++){
             let out = parse(terms, x, 0);
             ctx.beginPath();
-            ctx.arc(x/10 * canvas.width, out/10 * canvas.height, 10, 0, 2 * Math.PI, false);
+            ctx.arc((x + 5)/10 * canvas.width, (out + 5)/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
             ctx.fill();
             ctx.lineWidth = 5;
