@@ -92,6 +92,7 @@ try{
                 start = rtn - 1;
             }
         }
+        buf = buf * sign;
         for(let i = start + 1; i < terms.length; i++){
             let term = terms[i];
             if(term.type == "expr"){
@@ -136,7 +137,7 @@ try{
                 }
             }
         }
-        return buf * sign;
+        return buf;
     }
     function update(){
         let canvas = document.getElementById("graph");
