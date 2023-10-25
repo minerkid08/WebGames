@@ -72,7 +72,14 @@ try{
     }
     let rtn = 0;
     function parse(terms, x, start){
+        let sign = 1;
         let buf = 0;
+        if(terms[start].type == "expr"){
+            if(terms[start].expr == "-"){
+                sign = -1;
+            }
+        }
+        start++;
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
@@ -129,7 +136,7 @@ try{
                 }
             }
         }
-        return buf;
+        return buf * sign;
     }
     function update(){
         let canvas = document.getElementById("graph");
