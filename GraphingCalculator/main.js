@@ -77,7 +77,7 @@ try{
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
-                start++;
+                start = start + 1;
             }
         }
         if(terms[start].type == "num"){
