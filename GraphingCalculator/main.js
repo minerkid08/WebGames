@@ -77,9 +77,9 @@ try{
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
+                start++;
             }
         }
-        start++;
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
