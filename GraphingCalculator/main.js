@@ -143,8 +143,8 @@ try{
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,canvas.width, canvas.height);
-        ctx.drawLine(canvas.width/2, 0, canvas.width/2, canvas.height);
-        ctx.drawLine(0, canvas.height/2, canvas.width, canvas.height/2);
+        //ctx.drawLine(canvas.width/2, 0, canvas.width/2, canvas.height);
+        //ctx.drawLine(0, canvas.height/2, canvas.width, canvas.height/2);
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
