@@ -142,6 +142,8 @@ try{
     function update(){
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = '#003300';
         ctx.clearRect(0,0,canvas.width, canvas.height);
         ctx.beginPath();
         ctx.moveTo(canvas.width/2, 0);
@@ -160,8 +162,6 @@ try{
             ctx.arc((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height, 10, 0, 2 * Math.PI, false);
             ctx.fillStyle = 'green';
             ctx.fill();
-            ctx.lineWidth = 5;
-            ctx.strokeStyle = '#003300';
             ctx.stroke();
         }
     }
