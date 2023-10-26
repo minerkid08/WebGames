@@ -183,9 +183,12 @@ try{
         let step = document.getElementById("step").value;
         step = parseFloat(step);
         
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#f08080';
+        
         let prevPoint = 0;
 
-        for(let x = -5; x <= 5; x++){
+        for(let x = -5; x <= 5; x+=step){
             if(x == -5){
                 prevPoint = parse(terms, x, 0);
                 continue;
