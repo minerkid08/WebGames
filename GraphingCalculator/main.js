@@ -180,13 +180,22 @@ try{
         let text = textBox.value;
         let terms = tokenize(text);
 
-        for(let x = -5; x < 6; x++){
+        let step = document.getElementById("step").value;
+        step = parseFloat(step);
+        
+        let prevPoint = 0;
+
+        for(let x = -5; x <= 5; x++){
+            if(x == -5){
+                prevPoint = parse(terms, x, 0);
+                continue;
+            }
             let out = parse(terms, x, 0);
             ctx.beginPath();
-            ctx.arc((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height, 10, 0, 2 * Math.PI, false);
-            ctx.fillStyle = 'green';
-            ctx.fill();
+            ctx.moveTo((x + 5 - step)/10 * canvas.width, (-prevPoint + 5)/10 * canvas.height);
+            ctx.lineTo((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height);
             ctx.stroke();
+            prevPoint = out;
         }
     }
 }catch(e){
