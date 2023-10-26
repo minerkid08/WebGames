@@ -142,6 +142,7 @@ try{
     function update(){
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
+        ctx.clearRect(0,0,canvas.width, canvas.height);
 
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#808080';
@@ -163,8 +164,6 @@ try{
         
         ctx.lineWidth = 5;
         ctx.strokeStyle = '#003300';
-
-        ctx.clearRect(0,0,canvas.width, canvas.height);
 
         ctx.beginPath();
         ctx.moveTo(canvas.width/2, 0);
