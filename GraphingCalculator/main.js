@@ -162,9 +162,17 @@ try{
         ctx.strokeStyle = '#808080';
         
         for(let x = 0; x < 11; x++){
+            if(x == 5){
+                continue;
+            }
             ctx.beginPath();
             ctx.moveTo(x * (canvas.width/10), 0);
-            ctx.lineTo(x * (canvas.width/10), canvas.height/2);
+            ctx.lineTo(x * (canvas.width/10), canvas.height);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(0, x * (canvas.height/10));
+            ctx.lineTo(canvas.width, x * (canvas.height/10));
             ctx.stroke();
         }
         
