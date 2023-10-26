@@ -142,20 +142,39 @@ try{
     function update(){
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
+
         ctx.lineWidth = 5;
         ctx.strokeStyle = '#003300';
+
         ctx.clearRect(0,0,canvas.width, canvas.height);
+
         ctx.beginPath();
         ctx.moveTo(canvas.width/2, 0);
         ctx.lineTo(canvas.width/2, canvas.height);
         ctx.stroke();
+
         ctx.beginPath();
         ctx.moveTo(0, canvas.height/2);
         ctx.lineTo(canvas.width, canvas.height/2);
         ctx.stroke();
+
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#808080';
+        
+        for(let x = 0; x < 11; x++){
+            ctx.beginPath();
+            ctx.moveTo(x * (canvas.width/10), 0);
+            ctx.lineTo(x * (canvas.width/10), canvas.height/2);
+            ctx.stroke();
+        }
+        
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = '#003300';
+
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
+
         for(let x = -5; x < 6; x++){
             let out = parse(terms, x, 0);
             ctx.beginPath();
