@@ -102,7 +102,7 @@ try{
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, x, start + 1);
-                start = rtn - 1;
+                start = rtn;
             }
         }
         buf = buf * sign;
@@ -149,7 +149,7 @@ try{
             }
             else if(term.type == "paran"){
                 if(term.open == false){
-                    rtn = i + 1;
+                    rtn = i;
                     return buf;
                 }
             }
