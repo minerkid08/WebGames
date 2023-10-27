@@ -152,7 +152,7 @@ try{
                 }
             }
             else{
-                err("unexpected term: " + term.type +" at " + i);
+                err("unexpected term: " + term.type + " at " + i);
             }
         }
         return buf;
@@ -203,6 +203,9 @@ try{
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
+        for(let i = 0; i < terms.length; i++){
+            alert(terms[i].type);
+        }
 
         if(hasErr){return;}
 
