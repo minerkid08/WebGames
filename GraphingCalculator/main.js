@@ -36,23 +36,6 @@ try{
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
             }
-            else if(char.toLowerCase() != char.toUpperCase()){
-                let num = "";
-                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
-                    num = num + char;
-                    i++;
-                    char = text[i];
-                    if(char == " "){
-                        break;
-                    }
-                    if(char === undefined){
-                        break;
-                    }
-                }
-                let term = new Var();
-                term.value = num;
-                terms[terms.length] = term;
-            }
             else if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
                 term.expr = char;
@@ -67,6 +50,20 @@ try{
                 let term = new Paran();
                 term.open = false;
                 terms[terms.length] = term;
+            }
+            else if(char.toLowerCase() != char.toUpperCase()){
+                let num = "";
+                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
+                    num = num + char;
+                    i++;
+                    char = text[i];
+                    if(char == " "){
+                        break;
+                    }
+                    if(char === undefined){
+                        break;
+                    }
+                }
             }else{
                 err("unexpected symbol: " + char);
             }
