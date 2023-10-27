@@ -22,7 +22,7 @@ try{
             if(char == " "){
                 continue;
             }
-            if(!isNaN(char)){
+            else if(!isNaN(char)){
                 let num = "";
                 while(!isNaN(char) || char == "."){
                     num = num + char;
@@ -33,7 +33,7 @@ try{
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
             }
-            if(char !== undefined){
+            else if(char !== undefined){
                 if(char.toLowerCase() != char.toUpperCase()){
                     let num = "";
                     while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
@@ -52,20 +52,22 @@ try{
                     terms[terms.length] = term;
                 }
             }
-            if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
+            else if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
                 term.expr = char;
                 terms[terms.length] = term;
             }
-            if(char == "("){
+            else if(char == "("){
                 let term = new Paran();
                 term.open = true;
                 terms[terms.length] = term;
             }
-            if(char == ")"){
+            else if(char == ")"){
                 let term = new Paran();
                 term.open = false;
                 terms[terms.length] = term;
+            }else{
+                err("unexpected symbol: " + char);
             }
         }
         return terms;
@@ -149,6 +151,7 @@ try{
         document.getElementById("err").innerHTML = msg;
     }
     function update(){
+        document.getElementById("err").innerHTML = "no errors :)";
         hasErr = false;
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
