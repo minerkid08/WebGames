@@ -149,6 +149,7 @@ try{
         canvas.getElementById("err").innerHTML = msg;
     }
     function update(){
+        hasErr = false;
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
         ctx.clearRect(0,0,canvas.width, canvas.height);
@@ -157,7 +158,6 @@ try{
         ctx.strokeStyle = '#808080';
         
         for(let x = 0; x < 11; x++){
-            hasErr = false;
             if(x == 5){
                 continue;
             }
