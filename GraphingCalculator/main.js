@@ -43,9 +43,9 @@ try{
                 terms[terms.length] = term;
                 continue;
             }
-            if(/^\d+$/.test(char)){
+            if(!isNaN(parseInt(char))){
                 let num = "";
-                while(/^\d+$/.test(char) || char == "."){
+                while(!isNaN(parseInt(char)) || char == "."){
                     num = num + char;
                     i++;
                     char = text[i];
@@ -57,7 +57,7 @@ try{
             }
             if(char.toLowerCase() != char.toUpperCase()){
                 let num = "";
-                while(/^\d+$/.test(char) || char.toLowerCase() != char.toUpperCase()){
+                while(!isNaN(parseInt(char)) || char.toLowerCase() != char.toUpperCase()){
                     num = num + char;
                     i++;
                     char = text[i];
