@@ -181,6 +181,10 @@ try{
 
         let step = document.getElementById("step").value;
         step = parseFloat(step);
+
+        if(step <= 0){
+            step = 1;
+        }
         
         ctx.lineWidth = 4;
         ctx.strokeStyle = '#f08080';
