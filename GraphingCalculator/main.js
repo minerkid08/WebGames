@@ -25,18 +25,6 @@ try{
             if(char == " "){
                 continue;
             }
-            if(/^\d+$/.test(char)){
-                let num = "";
-                while(/^\d+$/.test(char) || char == "."){
-                    num = num + char;
-                    i++;
-                    char = text[i];
-                }
-                let term = new Num();
-                term.value = parseFloat(num);
-                terms[terms.length] = term;
-                continue;
-            }
             if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
                 term.expr = char;
@@ -52,6 +40,18 @@ try{
             if(char == ")"){
                 let term = new Paran();
                 term.open = false;
+                terms[terms.length] = term;
+                continue;
+            }
+            if(/^\d+$/.test(char)){
+                let num = "";
+                while(/^\d+$/.test(char) || char == "."){
+                    num = num + char;
+                    i++;
+                    char = text[i];
+                }
+                let term = new Num();
+                term.value = parseFloat(num);
                 terms[terms.length] = term;
                 continue;
             }
