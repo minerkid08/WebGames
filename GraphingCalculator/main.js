@@ -116,7 +116,7 @@ try{
                     }
                 }
                 else{
-                    alert("expected number, got " + term2.type + " , " + term2.expr);
+                    err("expected number, got " + term2.type);
                 }
                 if(term.expr == "+"){
                     buf = buf + num;
