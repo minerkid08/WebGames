@@ -206,6 +206,7 @@ try{
         
         for(let i = 0; i < terms.length; i++){
             alert(terms[i].type);
+            alert(terms[i].value);
         }
 
         if(hasErr){return;}
