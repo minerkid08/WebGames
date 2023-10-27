@@ -25,9 +25,9 @@ try{
             if(char == " "){
                 continue;
             }
-            if(!(/^\d+$/.test(char))){
+            if(/^\d+$/.test(char)){
                 let num = "";
-                while(!(/^\d+$/.test(char)) || char == "."){
+                while(/^\d+$/.test(char) || char == "."){
                     num = num + char;
                     i++;
                     char = text[i];
@@ -57,7 +57,7 @@ try{
             }
             if(char.toLowerCase() != char.toUpperCase()){
                 let num = "";
-                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
+                while(/^\d+$/.test(char) || char.toLowerCase() != char.toUpperCase()){
                     num = num + char;
                     i++;
                     char = text[i];
