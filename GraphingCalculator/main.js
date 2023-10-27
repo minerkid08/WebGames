@@ -85,6 +85,8 @@ try{
         }else if(terms[start].type == "var"){
             if(terms[start].value == "x"){
                 buf = x;
+            }else{
+                err("undefined var: " + terms[start].value);
             }
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
@@ -104,6 +106,8 @@ try{
                 }else if(term2.type == "var"){
                     if(term2.value == "x"){
                         num = x;
+                    }else{
+                        err("undefined var: " + term2.value);
                     }
                 }else if(term2.type == "paran"){
                     if(term2.open){
@@ -139,6 +143,11 @@ try{
         }
         return buf;
     }
+    let hasErr = false;
+    function err(msg){
+        hasErr = true;
+        canvas.getElementById("err").innerHTML = msg;
+    }
     function update(){
         let canvas = document.getElementById("graph");
         let ctx = canvas.getContext("2d");
@@ -148,6 +157,7 @@ try{
         ctx.strokeStyle = '#808080';
         
         for(let x = 0; x < 11; x++){
+            hasErr = false;
             if(x == 5){
                 continue;
             }
@@ -179,6 +189,8 @@ try{
         let text = textBox.value;
         let terms = tokenize(text);
 
+        if(hasErr){return;}
+
         let step = document.getElementById("step").value;
         step = parseFloat(step);
 
@@ -197,6 +209,7 @@ try{
                 continue;
             }
             let out = parse(terms, x, 0);
+            if(hasErr){return;}
             ctx.beginPath();
             ctx.moveTo((x + 5 - step)/10 * canvas.width, (-prevPoint + 5)/10 * canvas.height);
             ctx.lineTo((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height);
