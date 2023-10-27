@@ -146,7 +146,7 @@ try{
     let hasErr = false;
     function err(msg){
         hasErr = true;
-        canvas.getElementById("err").innerHTML = msg;
+        document.getElementById("err").innerHTML = msg;
     }
     function update(){
         hasErr = false;
