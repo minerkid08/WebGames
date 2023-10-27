@@ -206,6 +206,11 @@ try{
         let text = textBox.value;
         let terms = tokenize(text);
 
+        for(let i = 0; i < terms.length; i++){
+            alert(terms[i].type);
+            alert(terms[i].value);
+        }
+
         if(hasErr){return;}
 
         let step = document.getElementById("step").value;
