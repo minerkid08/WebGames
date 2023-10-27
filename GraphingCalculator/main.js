@@ -203,9 +203,6 @@ try{
         let textBox = document.getElementById("expression");
         let text = textBox.value;
         let terms = tokenize(text);
-        for(let i = 0; i < terms.length; i++){
-            alert(terms[i].type);
-        }
 
         if(hasErr){return;}
 
