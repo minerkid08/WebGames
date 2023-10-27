@@ -25,7 +25,7 @@ try{
             if(char == " "){
                 continue;
             }
-            else if(!isNaN(char)){
+            if(!isNaN(char)){
                 let num = "";
                 while(!isNaN(char) || char == "."){
                     num = num + char;
@@ -35,23 +35,27 @@ try{
                 let term = new Num();
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
+                continue;
             }
-            else if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
+            if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
                 term.expr = char;
                 terms[terms.length] = term;
+                continue;
             }
-            else if(char == "("){
+            if(char == "("){
                 let term = new Paran();
                 term.open = true;
                 terms[terms.length] = term;
+                continue;
             }
-            else if(char == ")"){
+            if(char == ")"){
                 let term = new Paran();
                 term.open = false;
                 terms[terms.length] = term;
+                continue;
             }
-            else if(char.toLowerCase() != char.toUpperCase()){
+            if(char.toLowerCase() != char.toUpperCase()){
                 let num = "";
                 while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
                     num = num + char;
@@ -64,9 +68,12 @@ try{
                         break;
                     }
                 }
-            }else{
-                err("unexpected symbol: " + char);
+                let term = new Var();
+                term.value = num;
+                terms[terms.length] = term;
+                continue;
             }
+            err("unexpected symbol: " + char);
         }
         return terms;
     }
