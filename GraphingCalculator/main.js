@@ -50,6 +50,7 @@ try{
                     i++;
                     char = text[i];
                 }
+                i--;
                 let term = new Num();
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
@@ -68,6 +69,7 @@ try{
                         break;
                     }
                 }
+                i--;
                 let term = new Var();
                 term.value = num;
                 terms[terms.length] = term;
