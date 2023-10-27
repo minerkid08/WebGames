@@ -25,9 +25,9 @@ try{
             if(char == " "){
                 continue;
             }
-            if(!isNaN(char)){
+            if(!(/^\d+$/.test(char))){
                 let num = "";
-                while(!isNaN(char) || char == "."){
+                while(!(/^\d+$/.test(char)) || char == "."){
                     num = num + char;
                     i++;
                     char = text[i];
