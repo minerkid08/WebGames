@@ -85,6 +85,8 @@ try{
             if(terms[start].expr == "-"){
                 sign = -1;
                 start = start + 1;
+            }else{
+                err("unexpected expr, term: " + start + ", expr: " + terms[start].expr);
             }
         }
         if(terms[start].type == "num"){
@@ -120,6 +122,8 @@ try{
                     if(term2.open){
                         num = parse(terms, x, i + 1);
                         i = rtn;
+                    }else{
+                        err("unexpected close paran at " + i);
                     }
                 }
                 else{
@@ -141,11 +145,14 @@ try{
                     buf = Math.pow(buf, num);
                 }
             }
-            if(term.type == "paran"){
+            else if(term.type == "paran"){
                 if(term.open == false){
                     rtn = i + 1;
                     return buf;
                 }
+            }
+            else{
+                err("unexpected term: " + term.type +" at " + i);
             }
         }
         return buf;
