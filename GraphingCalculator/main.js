@@ -19,6 +19,9 @@ try{
         let terms = [];
         for(let i = 0; i < text.length; i++){
             let char = text[i];
+            if(char === undefined){
+                continue;
+            }
             if(char == " "){
                 continue;
             }
@@ -33,24 +36,22 @@ try{
                 term.value = parseFloat(num);
                 terms[terms.length] = term;
             }
-            else if(char !== undefined){
-                if(char.toLowerCase() != char.toUpperCase()){
-                    let num = "";
-                    while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
-                        num = num + char;
-                        i++;
-                        char = text[i];
-                        if(char == " "){
-                            break;
-                        }
-                        if(char === undefined){
-                            break;
-                        }
+            else if(char.toLowerCase() != char.toUpperCase()){
+                let num = "";
+                while(!isNaN(char) || char.toLowerCase() != char.toUpperCase()){
+                    num = num + char;
+                    i++;
+                    char = text[i];
+                    if(char == " "){
+                        break;
                     }
-                    let term = new Var();
-                    term.value = num;
-                    terms[terms.length] = term;
+                    if(char === undefined){
+                        break;
+                    }
                 }
+                let term = new Var();
+                term.value = num;
+                terms[terms.length] = term;
             }
             else if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
                 let term = new Expr();
