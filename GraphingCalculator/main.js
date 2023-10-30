@@ -174,7 +174,7 @@ try{
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#808080';
         
-        let size = document.getElementById("step").value;
+        let size = document.getElementById("size").value;
         size = parseInt(size);
 
         if(size <= 0){
