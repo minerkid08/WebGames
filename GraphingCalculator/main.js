@@ -174,18 +174,26 @@ try{
         ctx.lineWidth = 3;
         ctx.strokeStyle = '#808080';
         
-        for(let x = 0; x < 11; x++){
-            if(x == 5){
+        let size = document.getElementById("step").value;
+        size = parseFloat(size);
+
+        if(size <= 0){
+            size = 5;
+        }
+        
+        for(let x = -size; x < size + 1; x++){
+            if(x == 0){
                 continue;
             }
+            let x2 = x + size;
             ctx.beginPath();
-            ctx.moveTo(x * (canvas.width/10), 0);
-            ctx.lineTo(x * (canvas.width/10), canvas.height);
+            ctx.moveTo(x2 * (canvas.width/10), 0);
+            ctx.lineTo(x2 * (canvas.width/10), canvas.height);
             ctx.stroke();
             
             ctx.beginPath();
-            ctx.moveTo(0, x * (canvas.height/10));
-            ctx.lineTo(canvas.width, x * (canvas.height/10));
+            ctx.moveTo(0, x2 * (canvas.height/10));
+            ctx.lineTo(canvas.width, x2 * (canvas.height/10));
             ctx.stroke();
         }
         
