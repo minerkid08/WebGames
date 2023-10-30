@@ -175,7 +175,7 @@ try{
         ctx.strokeStyle = '#808080';
         
         let size = document.getElementById("step").value;
-        size = parseFloat(size);
+        size = parseInt(size);
 
         if(size <= 0){
             size = 5;
@@ -233,16 +233,16 @@ try{
         
         let prevPoint = 0;
 
-        for(let x = -5; x <= 5; x+=step){
-            if(x == -5){
+        for(let x = -size; x <= size; x+=step){
+            if(x == -size){
                 prevPoint = parse(terms, x, 0);
                 continue;
             }
             let out = parse(terms, x, 0);
             if(hasErr){return;}
             ctx.beginPath();
-            ctx.moveTo((x + 5 - step)/10 * canvas.width, (-prevPoint + 5)/10 * canvas.height);
-            ctx.lineTo((x + 5)/10 * canvas.width, (-out + 5)/10 * canvas.height);
+            ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint + size)/(size * 2) * canvas.height);
+            ctx.lineTo((x + size)/(size * 2) * canvas.width, (-out + size)/(size * 2) * canvas.height);
             ctx.stroke();
             prevPoint = out;
         }
