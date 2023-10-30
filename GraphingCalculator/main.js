@@ -187,13 +187,13 @@ try{
             }
             let x2 = x + size;
             ctx.beginPath();
-            ctx.moveTo(x2 * (canvas.width/10), 0);
-            ctx.lineTo(x2 * (canvas.width/10), canvas.height);
+            ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
+            ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
             ctx.stroke();
             
             ctx.beginPath();
-            ctx.moveTo(0, x2 * (canvas.height/10));
-            ctx.lineTo(canvas.width, x2 * (canvas.height/10));
+            ctx.moveTo(0, x2 * (canvas.height/(size * 2)));
+            ctx.lineTo(canvas.width, x2 * (canvas.height/(size * 2)));
             ctx.stroke();
         }
         
