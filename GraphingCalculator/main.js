@@ -169,7 +169,6 @@ try{
         hasErr = false;
         let terms = tokenize(document.getElementById("expression").value);
         let val = document.getElementById("x").value;
-        alert(val + " e");
         if(val == ""){
             let canvas = document.getElementById("graph");
             let ctx = canvas.getContext("2d");
@@ -242,6 +241,7 @@ try{
         }else{
             let x = parsefloat(val);
             let out = parse(terms, x, 0);
+            alert(x + " " + out);
             document.getElementById("expressionRtn").innerHTML = out;
         }
     }
