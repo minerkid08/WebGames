@@ -240,7 +240,8 @@ try{
             }
         }else{
             alert(val);
-            let x = parsefloat(val);
+            alert(parseInt(val));
+            let x = parseFloat(val);
             alert(x);
             let out = parse(terms, x, 0);
             alert(out);
