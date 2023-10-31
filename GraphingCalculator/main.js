@@ -239,6 +239,7 @@ try{
                 prevPoint = out;
             }
         }else{
+            alert(val);
             let x = parsefloat(val);
             alert(x);
             let out = parse(terms, x, 0);
