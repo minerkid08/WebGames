@@ -239,12 +239,8 @@ try{
                 prevPoint = out;
             }
         }else{
-            alert(val);
-            alert(parseInt(val));
-            let x = parseFloat(val);
-            alert(x);
+            let x = parse(tokenize(val), 0, 0);
             let out = parse(terms, x, 0);
-            alert(out);
             document.getElementById("expressionRtn").innerHTML = out;
         }
     }
