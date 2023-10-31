@@ -169,6 +169,7 @@ try{
         hasErr = false;
         let terms = tokenize(document.getElementById("expression").value);
         let val = document.getElementById("x");
+        alert(val + " e");
         if(val == ""){
             let canvas = document.getElementById("graph");
             let ctx = canvas.getContext("2d");
