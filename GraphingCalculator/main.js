@@ -240,8 +240,9 @@ try{
             }
         }else{
             let x = parsefloat(val);
+            alert(x);
             let out = parse(terms, x, 0);
-            alert(x + " " + out);
+            alert(out);
             document.getElementById("expressionRtn").innerHTML = out;
         }
     }
