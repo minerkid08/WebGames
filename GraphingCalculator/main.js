@@ -169,7 +169,7 @@ try{
         hasErr = false;
         let terms = tokenize(document.getElementById("expression").value);
         let val = document.getElementById("x");
-        if(x == ""){
+        if(val == ""){
             let canvas = document.getElementById("graph");
             let ctx = canvas.getContext("2d");
             ctx.clearRect(0,0,canvas.width, canvas.height);
