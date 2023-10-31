@@ -167,84 +167,81 @@ try{
     function update(){
         document.getElementById("err").innerHTML = "no errors :)";
         hasErr = false;
-        let canvas = document.getElementById("graph");
-        let ctx = canvas.getContext("2d");
-        ctx.clearRect(0,0,canvas.width, canvas.height);
+        let terms = tokenize(document.getElementById("expression").value);
+        let val = document.getElementById("x");
+        if(x == ""){
+            let canvas = document.getElementById("graph");
+            let ctx = canvas.getContext("2d");
+            ctx.clearRect(0,0,canvas.width, canvas.height);
 
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = '#808080';
-        
-        let size = document.getElementById("size").value;
-        size = parseInt(size);
-
-        if(size <= 0){
-            size = 5;
-        }
-        
-        for(let x = -size; x < size + 1; x++){
-            if(x == 0){
-                continue;
-            }
-            let x2 = x + size;
-            ctx.beginPath();
-            ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
-            ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
-            ctx.stroke();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#808080';
             
-            ctx.beginPath();
-            ctx.moveTo(0, x2 * (canvas.height/(size * 2)));
-            ctx.lineTo(canvas.width, x2 * (canvas.height/(size * 2)));
-            ctx.stroke();
-        }
-        
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = '#003300';
+            let size = document.getElementById("size").value;
+            size = parseInt(size);
 
-        ctx.beginPath();
-        ctx.moveTo(canvas.width/2, 0);
-        ctx.lineTo(canvas.width/2, canvas.height);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height/2);
-        ctx.lineTo(canvas.width, canvas.height/2);
-        ctx.stroke();
-
-        let textBox = document.getElementById("expression");
-        let text = textBox.value;
-        let terms = tokenize(text);
-
-        //for(let i = 0; i < terms.length; i++){
-        //    alert(terms[i].type);
-        //    alert(terms[i].value);
-        //}
-
-        if(hasErr){return;}
-
-        let step = document.getElementById("step").value;
-        step = parseFloat(step);
-
-        if(step <= 0){
-            step = 1;
-        }
-        
-        ctx.lineWidth = 4;
-        ctx.strokeStyle = '#f08080';
-        
-        let prevPoint = 0;
-
-        for(let x = -size; x <= size; x+=step){
-            if(x == -size){
-                prevPoint = parse(terms, x, 0);
-                continue;
+            if(size <= 0){
+                size = 5;
             }
-            let out = parse(terms, x, 0);
-            if(hasErr){return;}
+
+            for(let x = -size; x < size + 1; x++){
+                if(x == 0){
+                    continue;
+                }
+                let x2 = x + size;
+                ctx.beginPath();
+                ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
+                ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(0, x2 * (canvas.height/(size * 2)));
+                ctx.lineTo(canvas.width, x2 * (canvas.height/(size * 2)));
+                ctx.stroke();
+            }
+
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = '#003300';
+
             ctx.beginPath();
-            ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint + size)/(size * 2) * canvas.height);
-            ctx.lineTo((x + size)/(size * 2) * canvas.width, (-out + size)/(size * 2) * canvas.height);
+            ctx.moveTo(canvas.width/2, 0);
+            ctx.lineTo(canvas.width/2, canvas.height);
             ctx.stroke();
-            prevPoint = out;
+
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height/2);
+            ctx.lineTo(canvas.width, canvas.height/2);
+            ctx.stroke();
+
+            let step = document.getElementById("step").value;
+            step = parseFloat(step);
+
+            if(step <= 0){
+                step = 1;
+            }
+
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = '#f08080';
+
+            let prevPoint = 0;
+
+            for(let x = -size; x <= size; x+=step){
+                if(x == -size){
+                    prevPoint = parse(terms, x, 0);
+                    continue;
+                }
+                let out = parse(terms, x, 0);
+                if(hasErr){return;}
+                ctx.beginPath();
+                ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint + size)/(size * 2) * canvas.height);
+                ctx.lineTo((x + size)/(size * 2) * canvas.width, (-out + size)/(size * 2) * canvas.height);
+                ctx.stroke();
+                prevPoint = out;
+            }
+        }else{
+            let x = parsefloat(val);
+            let out = parse(terms, x, 0);
+            document.getElementById("expressionRtn").innerHTML = out;
         }
     }
 }catch(e){
