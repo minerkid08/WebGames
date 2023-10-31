@@ -168,7 +168,7 @@ try{
         document.getElementById("err").innerHTML = "no errors :)";
         hasErr = false;
         let terms = tokenize(document.getElementById("expression").value);
-        let val = document.getElementById("x");
+        let val = document.getElementById("x").value;
         alert(val + " e");
         if(val == ""){
             let canvas = document.getElementById("graph");
