@@ -232,6 +232,7 @@ try{
         }else{
             let x = parse(tokenize(val), 0, 0);
             for(let l = 1; l < 3; l++){
+                let terms = tokenize(document.getElementById("e" + l).value);
                 let out = parse(terms, x, 0);
                 document.getElementById("e" + l + "rtn").innerHTML = out;
             }
