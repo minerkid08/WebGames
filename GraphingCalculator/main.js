@@ -214,6 +214,7 @@ try{
             
             for(let l = 1; l < 3; l++){
                 let terms = tokenize(document.getElementById("e" + l).value);
+                document.getElementById("e" + 1 + "rtn").innerHTML = "";
 
                 for(let x = -size; x <= size; x+=step){
                     if(x == -size){
