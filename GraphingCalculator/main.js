@@ -151,6 +151,14 @@ try{
                 if(term.open == false){
                     rtn = i;
                     return buf;
+                }else{
+                    buf = buf * parse(terms, x, i + 1);
+                    i = rtn;
+                }
+            }
+            else if(term.type == "var"){
+                if(term.value == "x"){
+                    buf = buf * x;
                 }
             }
             else{
