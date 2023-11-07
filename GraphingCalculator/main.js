@@ -157,7 +157,7 @@ try{
         }
         return buf;
     }
-    let vars = {};
+    let vars = new Object();
     function getVar(name){
         if(vars[name] != NaN){
             return vars[name];
