@@ -80,7 +80,7 @@ try{
         return terms;
     }
     let rtn = 0;
-    function parse(terms, x, start){
+    function parse(terms, start){
         let sign = 1;
         let buf = 0;
         if(terms[start].type == "expr"){
@@ -94,14 +94,10 @@ try{
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
-            if(terms[start].value == "x"){
-                buf = x;
-            }else{
-                err("undefined var: " + terms[start].value);
-            }
+            buf = getVar(terms[start].type);
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
-                buf = parse(terms, x, start + 1);
+                buf = parse(terms, start + 1);
                 start = rtn;
             }
         }
@@ -115,14 +111,10 @@ try{
                 if(term2.type == "num"){
                     num = term2.value;
                 }else if(term2.type == "var"){
-                    if(term2.value == "x"){
-                        num = x;
-                    }else{
-                        err("undefined var: " + term2.value);
-                    }
+                    num = getVar(term2.value);
                 }else if(term2.type == "paran"){
                     if(term2.open){
-                        num = parse(terms, x, i + 1);
+                        num = parse(terms, i + 1);
                         i = rtn;
                     }else{
                         err("unexpected close paran at " + i);
@@ -152,14 +144,12 @@ try{
                     rtn = i;
                     return buf;
                 }else{
-                    buf = buf * parse(terms, x, i + 1);
+                    buf = buf * parse(terms, i + 1);
                     i = rtn;
                 }
             }
             else if(term.type == "var"){
-                if(term.value == "x"){
-                    buf = buf * x;
-                }
+                buf = buf * getVar(term.type);
             }
             else{
                 err("unexpected term: " + term.type + " at " + i);
@@ -167,6 +157,15 @@ try{
         }
         return buf;
     }
+    let vars = {};
+    function getVar(name){
+        if(vars[name] != NaN){
+            return vars[name];
+        }else{
+            err("undefined var: " + name);
+        }
+    }
+
     let hasErr = false;
     function err(msg){
         hasErr = true;
@@ -225,11 +224,12 @@ try{
                 document.getElementById("e" + 1 + "rtn").innerHTML = "";
 
                 for(let x = -size; x <= size; x+=step){
+                    vars["x"] = x;
                     if(x == -size){
-                        prevPoint = parse(terms, x, 0);
+                        prevPoint = parse(terms, 0);
                         continue;
                     }
-                    let out = parse(terms, x, 0);
+                    let out = parse(terms, 0);
                     if(hasErr){return;}
                     ctx.beginPath();
                     ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint + size)/(size * 2) * canvas.height);
@@ -242,7 +242,8 @@ try{
             let x = parse(tokenize(val), 0, 0);
             for(let l = 1; l < 3; l++){
                 let terms = tokenize(document.getElementById("e" + l).value);
-                let out = parse(terms, x, 0);
+                vars["x"] = x;
+                let out = parse(terms, 0);
                 document.getElementById("e" + l + "rtn").innerHTML = out;
             }
         }
