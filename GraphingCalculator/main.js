@@ -101,6 +101,7 @@ try{
                     start += 2;
                 }
             }
+        }
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
