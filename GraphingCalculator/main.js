@@ -94,7 +94,7 @@ try{
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
-            buf = getVar(terms[start].type);
+            buf = getVar(terms[start].value);
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, start + 1);
@@ -149,7 +149,7 @@ try{
                 }
             }
             else if(term.type == "var"){
-                buf = buf * getVar(term.type);
+                buf = buf * getVar(term.value);
             }
             else{
                 err("unexpected term: " + term.type + " at " + i);
@@ -159,7 +159,7 @@ try{
     }
     let vars = new Object();
     function getVar(name){
-        if(vars[name] != NaN){
+        if(vars[name] != undefined){
             return vars[name];
         }else{
             err("undefined var: " + name);
