@@ -93,6 +93,14 @@ try{
         let buf = 0;
         let asign = false;
         let asignVar = "";
+        if(terms[start].type == "var"){
+            if(terms[1] != undefined){
+                if(start == 0 && terms[1].type == "asign"){
+                    asign = true;
+                    asignVar = terms[1].type;
+                    start += 2;
+                }
+            }
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
@@ -104,13 +112,7 @@ try{
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
-            if(start == 0 && terms[1].type == "asign"){
-                asign = true;
-                asignVar = terms[1].type;
-                start += 2;
-            }else{
-                buf = getVar(terms[start].value);
-            }
+            buf = getVar(terms[start].value);
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, start + 1);
@@ -172,7 +174,7 @@ try{
             }
         }
         if(asign){
-            vars[asign] = buf;
+            vars[asignVar] = buf;
             return NaN;
         }
         return buf;
@@ -192,6 +194,7 @@ try{
         document.getElementById("err").innerHTML = msg;
     }
     function update(){
+        vars = new Object();
         document.getElementById("err").innerHTML = "no errors :)";
         hasErr = false;
         let val = document.getElementById("x").value;
