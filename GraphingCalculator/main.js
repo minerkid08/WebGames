@@ -180,12 +180,20 @@ try{
         }
         return buf;
     }
+    let globalVars = {
+        pi = Math.PI,
+        e = Math.E
+    };
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
             return vars[name];
         }else{
-            err("undefined var: " + name);
+            if(globalVars[name] != undefined){
+                return globalVars[name];
+            }else{
+                err("undefined var: " + name);
+            }
         }
     }
 
