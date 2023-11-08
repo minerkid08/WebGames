@@ -15,6 +15,9 @@ try{
         type = "paran";
         open = false;
     }
+    class Asign{
+        type = "asign";
+    }
     function tokenize(text){
         let terms = [];
         for(let i = 0; i < text.length; i++){
@@ -75,6 +78,10 @@ try{
                 terms[terms.length] = term;
                 continue;
             }
+            if(char == "="){
+                let term = new Asign();
+                terms[terms.length] = term;
+            }
             err("unexpected symbol: " + char);
         }
         return terms;
@@ -83,6 +90,8 @@ try{
     function parse(terms, start){
         let sign = 1;
         let buf = 0;
+        let asign = false;
+        let asignVar = "";
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
@@ -94,7 +103,13 @@ try{
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
-            buf = getVar(terms[start].value);
+            if(start == 0 && terms[1].type == "asign"){
+                asign = true;
+                asignVar = terms[1].type;
+                start += 2;
+            }else{
+                buf = getVar(terms[start].value);
+            }
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, start + 1);
@@ -154,6 +169,10 @@ try{
             else{
                 err("unexpected term: " + term.type + " at " + i);
             }
+        }
+        if(asign){
+            vars[asign] = buf;
+            return NaN;
         }
         return buf;
     }
