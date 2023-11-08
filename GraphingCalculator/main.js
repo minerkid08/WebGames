@@ -46,6 +46,11 @@ try{
                 terms[terms.length] = term;
                 continue;
             }
+            if(char == "="){
+                let term = new Asign();
+                terms[terms.length] = term;
+                continue;
+            }
             if(!isNaN(parseInt(char))){
                 let num = "";
                 while(!isNaN(parseInt(char)) || char == "."){
@@ -77,10 +82,6 @@ try{
                 term.value = num;
                 terms[terms.length] = term;
                 continue;
-            }
-            if(char == "="){
-                let term = new Asign();
-                terms[terms.length] = term;
             }
             err("unexpected symbol: " + char);
         }
