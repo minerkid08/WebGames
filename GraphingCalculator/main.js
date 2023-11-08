@@ -244,8 +244,8 @@ try{
             let prevPoints = {};
             let termList = {};
             for(let l = 1; l < 3; l++){
-                termList[termList.length] = tokenize(document.getElementById("e" + l).value);
-                document.getElementById("e" + 1 + "rtn").innerHTML = "";
+                termList[l-1] = tokenize(document.getElementById("e" + l).value);
+                document.getElementById("e" + l + "rtn").innerHTML = "";
             }
 
             for(let x = -size; x <= size; x+=step){
