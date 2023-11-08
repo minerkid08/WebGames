@@ -241,13 +241,16 @@ try{
             }
             ctx.lineWidth = 4;
             ctx.strokeStyle = '#f08080';
-            let prevPoints = {};
-            let termList = {};
+            let prevPoints = [];
+            let termList = [];
             for(let l = 1; l < 3; l++){
                 termList[l-1] = tokenize(document.getElementById("e" + l).value);
+                if(hasErr){
+                    return;
+                }
                 document.getElementById("e" + l + "rtn").innerHTML = "";
             }
-
+            
             for(let x = -size; x <= size; x+=step){
                 vars["x"] = x;
                 for(let l = 0; l < termList.length; l++){
