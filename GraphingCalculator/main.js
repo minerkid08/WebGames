@@ -241,25 +241,27 @@ try{
             }
             ctx.lineWidth = 4;
             ctx.strokeStyle = '#f08080';
-            let prevPoint = 0;
-            
+            let prevPoints = {};
+            let termList = {};
             for(let l = 1; l < 3; l++){
-                let terms = tokenize(document.getElementById("e" + l).value);
+                termList[termList.length] = tokenize(document.getElementById("e" + l).value);
                 document.getElementById("e" + 1 + "rtn").innerHTML = "";
+            }
 
-                for(let x = -size; x <= size; x+=step){
-                    vars["x"] = x;
+            for(let x = -size; x <= size; x+=step){
+                vars["x"] = x;
+                for(let l = 0; l < termList.length; l++){
                     if(x == -size){
-                        prevPoint = parse(terms, 0);
+                        prevPoint[l] = parse(termList[l], 0);
                         continue;
                     }
-                    let out = parse(terms, 0);
+                    let out = parse(termList[l], 0);
                     if(hasErr){return;}
                     ctx.beginPath();
-                    ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint + size)/(size * 2) * canvas.height);
+                    ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint[l] + size)/(size * 2) * canvas.height);
                     ctx.lineTo((x + size)/(size * 2) * canvas.width, (-out + size)/(size * 2) * canvas.height);
                     ctx.stroke();
-                    prevPoint = out;
+                    prevPoint[l] = out;
                 }
             }
         }else{
