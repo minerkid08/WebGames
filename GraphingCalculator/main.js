@@ -105,7 +105,7 @@ try{
         if(terms[start].type == "expr"){
             if(terms[start].expr == "-"){
                 sign = -1;
-                start = start + 1;
+                start++;
             }else{
                 err("unexpected expr, term: " + start + ", expr: " + terms[start].expr);
             }
