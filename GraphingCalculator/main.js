@@ -97,7 +97,7 @@ try{
             if(terms[1] != undefined){
                 if(start == 0 && terms[1].type == "asign"){
                     asign = true;
-                    asignVar = terms[1].value;
+                    asignVar = terms[0].value;
                     start += 2;
                 }
             }
