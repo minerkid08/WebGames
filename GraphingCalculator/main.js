@@ -252,16 +252,16 @@ try{
                 vars["x"] = x;
                 for(let l = 0; l < termList.length; l++){
                     if(x == -size){
-                        prevPoint[l] = parse(termList[l], 0);
+                        prevPoints[l] = parse(termList[l], 0);
                         continue;
                     }
                     let out = parse(termList[l], 0);
                     if(hasErr){return;}
                     ctx.beginPath();
-                    ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoint[l] + size)/(size * 2) * canvas.height);
+                    ctx.moveTo((x + size - step)/(size * 2) * canvas.width, (-prevPoints[l] + size)/(size * 2) * canvas.height);
                     ctx.lineTo((x + size)/(size * 2) * canvas.width, (-out + size)/(size * 2) * canvas.height);
                     ctx.stroke();
-                    prevPoint[l] = out;
+                    prevPoints[l] = out;
                 }
             }
         }else{
