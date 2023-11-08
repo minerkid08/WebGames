@@ -180,10 +180,9 @@ try{
         }
         return buf;
     }
-    let globalVars = {
-        pi = Math.PI,
-        e = Math.E
-    };
+    let globalVars = new Object();
+    globalVars["pi"] = Math.PI;
+    globalVars["e"] = Math.E;
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
