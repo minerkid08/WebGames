@@ -225,7 +225,7 @@ try{
             size = parseInt(size);
             let lineStep = parseFloat(document.getElementById("lineStep").value);
             if(lineStep <= 0){
-               lineStep = 5;
+               lineStep = 1;
             }
             if(size <= 0){
                 size = 5;
