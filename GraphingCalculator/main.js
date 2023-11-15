@@ -195,6 +195,15 @@ try{
             }
         }
     }
+    function getType(name){
+        if(vars[name] != undefined){
+            if(typeof(vars[name]) == "function"){
+                return "f";
+            }
+            return "v";
+        }
+        err("undefined var: " + name);
+    }
 
     let hasErr = false;
     function err(msg){
@@ -261,6 +270,7 @@ try{
             for(let x = -size; x <= size; x+=step){
                 vars["x"] = x;
                 for(let l = 0; l < termList.length; l++){
+                    if(termList[l].length == 0){continue;}
                     if(x == -size){
                         prevPoints[l] = parse(termList[l], 0);
                         continue;
