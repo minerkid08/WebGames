@@ -223,10 +223,14 @@ try{
             ctx.strokeStyle = '#808080';
             let size = document.getElementById("size").value;
             size = parseInt(size);
+            let lineStep = parseFloat(document.getElementById("lineStep").value);
+            if(lineStep <= 0){
+               lineStep = 5;
+            }
             if(size <= 0){
                 size = 5;
             }
-            for(let x = -size; x < size + 1; x++){
+            for(let x = -size; x < size + 1; x += lineStep){
                 if(x == 0){
                     continue;
                 }
