@@ -227,7 +227,7 @@ try{
             if(lineStep <= 0){
                lineStep = 1;
             }
-            alert(lineStep);
+            alert(document.getElementById("lineStep").value);
             if(size <= 0){
                 size = 5;
             }
