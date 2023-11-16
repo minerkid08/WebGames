@@ -113,7 +113,16 @@ try{
         if(terms[start].type == "num"){
             buf = terms[start].value;
         }else if(terms[start].type == "var"){
-            buf = getVar(terms[start].value);
+            if(getType(terms[start].value) == "v"){
+                buf = getVar(terms[start].value);
+            }else{
+                if(terms[start + 1] != undefined){
+                    if(terms[start + 1].type == "paran" && terms[start + 1].open){
+                        let param = parse(terms, start + 2);
+                        buf = func(terms[start].value, param);
+                    }
+                }
+            }
         }else if(terms[start].type == "paran"){
             if(terms[start].open){
                 buf = parse(terms, start + 1);
@@ -203,6 +212,17 @@ try{
             return "v";
         }
         err("undefined var: " + name);
+    }
+    function func(name, param){
+       if(vars[name] != undefined){
+            return vars[name](param);
+        }else{
+            if(globalVars[name] != undefined){
+                return globalVars[name](param);
+            }else{
+                err("undefined func: " + name);
+            }
+        } 
     }
 
     let hasErr = false;
