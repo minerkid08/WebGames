@@ -236,7 +236,7 @@ try{
                     continue;
                 }
                 for(let s = -1; s < 2; s+=2){
-                    let x2 = x * s;
+                    let x2 = x * s + size;
                     ctx.beginPath();
                     ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
                     ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
