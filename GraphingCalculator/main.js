@@ -231,19 +231,21 @@ try{
             if(size <= 0){
                 size = 5;
             }
-            for(let x = -size; x < size + 1; x += lineStep){
+            for(let x = 0; x <= size; x += lineStep){
                 if(x == 0){
                     continue;
                 }
-                let x2 = x + size;
-                ctx.beginPath();
-                ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
-                ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(0, x2 * (canvas.height/(size * 2)));
-                ctx.lineTo(canvas.width, x2 * (canvas.height/(size * 2)));
-                ctx.stroke();
+                for(let s = -1; s < 2; s+=2){
+                    let x2 = x * s;
+                    ctx.beginPath();
+                    ctx.moveTo(x2 * (canvas.width/(size * 2)), 0);
+                    ctx.lineTo(x2 * (canvas.width/(size * 2)), canvas.height);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, x2 * (canvas.height/(size * 2)));
+                    ctx.lineTo(canvas.width, x2 * (canvas.height/(size * 2)));
+                    ctx.stroke();
+                }
             }
             ctx.lineWidth = 5;
             ctx.strokeStyle = '#003300';
