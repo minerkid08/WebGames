@@ -192,6 +192,8 @@ try{
     let globalVars = new Object();
     globalVars["pi"] = Math.PI;
     globalVars["e"] = Math.E;
+    globalVars["sqrt"] = Math.sqrt;
+    globalVars["sin"] = Math.sin;
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
