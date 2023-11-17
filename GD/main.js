@@ -1,7 +1,8 @@
 function update(){
     try{
         var xmlHttp = new XMLHttpRequest();
-        xmlHttp.onreadystatechange = function() { 
+        xmlHttp.onreadystatechange = function() {
+            alert("e"); 
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 alert(xmlHttp.responseText);
         }
