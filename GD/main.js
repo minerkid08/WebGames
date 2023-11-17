@@ -9,7 +9,7 @@ function update(){
                 alert(xmlHttp.responseText);
         }
         let params = {
-            targetAccountID: 16,
+            targetAccountID: 71,
             secret: "Wmfd2893gb7"
         };
         xmlHttp.open("POST", "http://boomlings.com/database/getGJUserInfo20.php", true);
