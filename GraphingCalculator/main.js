@@ -193,8 +193,9 @@ try{
     let globalVars = new Object();
     globalVars["pi"] = Math.PI;
     globalVars["e"] = Math.E;
-    globalVars["sqrt"] = Math.sqrt;
-    globalVars["sin"] = Math.sin;
+    let globalFuncs = new Object();
+    globalFuncs["sqrt"] = Math.sqrt;
+    globalFuncs["sin"] = Math.sin;
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
@@ -208,24 +209,20 @@ try{
         }
     }
     function getType(name){
-        if(vars[name] != undefined){
-            if(typeof(vars[name]) == "function"){
-                return "f";
-            }
+        if(vars[name] != undefined || globalVars[name] != undefined){
             return "v";
+        }
+        if(globalFuncs[name != undefined]){
+            return "f";
         }
         err("undefined var: " + name);
     }
     function func(name, param){
-       if(vars[name] != undefined){
-            return vars[name](param);
+        if(globalFuncs[name] != undefined){
+            return globalFuncs[name](param);
         }else{
-            if(globalVars[name] != undefined){
-                return globalVars[name](param);
-            }else{
-                err("undefined func: " + name);
-            }
-        } 
+            err("undefined func: " + name);
+        }
     }
 
     let hasErr = false;
