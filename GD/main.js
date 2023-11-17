@@ -1,4 +1,4 @@
-document.onload = function(){
+function update(){
     try{
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
