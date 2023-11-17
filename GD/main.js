@@ -2,9 +2,9 @@ function update(){
     try{
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
-            alert(xmlHttp.readyState);
-            alert(xmlHttp.status);
-            alert(xmlHttp.responseText);
+            alert(xmlHttp.readyState + " +e");
+            alert(xmlHttp.status + "+e");
+            alert(xmlHttp.responseText + "+e");
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 alert(xmlHttp.responseText);
         }
