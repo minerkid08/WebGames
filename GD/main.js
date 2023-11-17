@@ -14,7 +14,6 @@ function update(){
         };
         xmlHttp.open("POST", "http://boomlings.com/database/getGJUserInfo20.php", true);
         xmlHttp.send(params);
-        alert("e");
     }catch(e){
         alert(e);
     }
