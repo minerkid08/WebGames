@@ -88,6 +88,9 @@ try{
         return terms;
     }
     let rtn = 0;
+    function parseTerm(term){
+        
+    }
     function parse(terms, start){
         let sign = 1;
         let buf = 0;
