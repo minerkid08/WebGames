@@ -119,7 +119,6 @@ try{
                 if(terms[start + 1] != undefined){
                     if(terms[start + 1].type == "paran" && terms[start + 1].open){
                         let param = parse(terms, start + 2);
-                        alert("e");
                         buf = func(terms[start].value, param);
                     }
                 }
@@ -212,7 +211,7 @@ try{
         if(vars[name] != undefined || globalVars[name] != undefined){
             return "v";
         }
-        if(globalFuncs[name != undefined]){
+        if(globalFuncs[name] != undefined){
             return "f";
         }
         err("undefined var: " + name);
