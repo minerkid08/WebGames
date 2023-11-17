@@ -4,7 +4,7 @@ function update(){
         xmlHttp.onreadystatechange = function() {
             alert(xmlHttp.readyState);
             alert(xmlHttp.status);
-            alert(xmlHttp.responseText);
+            alert(xmlHttp.response);
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
                 alert(xmlHttp.responseText);
         }
