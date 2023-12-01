@@ -198,6 +198,11 @@ try{
     let globalFuncs = new Object();
     globalFuncs["sqrt"] = Math.sqrt;
     globalFuncs["sin"] = Math.sin;
+    globalFuncs["cos"] = Math.cos;
+    globalFuncs["tan"] = Math.tan;
+    globalFuncs["asin"] = Math.asin;
+    globalFuncs["acos"] = Math.acos;
+    globalFuncs["atan"] = Math.atan;
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
