@@ -144,12 +144,12 @@ try{
                     num = term2.value;
                 }else if(term2.type == "var"){
                     if(getType(term2.value) == "v"){
-                        buf = getVar(term2.value);
+                        num = getVar(term2.value);
                     }else{
                         if(terms[i + 1] != undefined){
                             if(terms[i + 1].type == "paran" && terms[i + 1].open){
                                 let param = parse(terms, i + 2);
-                                buf = func(term2.value, param);
+                                num = func(term2.value, param);
                                 i = rtn;
                             }
                         }
