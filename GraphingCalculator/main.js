@@ -123,6 +123,7 @@ try{
                     if(terms[start + 1].type == "paran" && terms[start + 1].open){
                         let param = parse(terms, start + 2);
                         buf = func(terms[start].value, param);
+                        start = rtn;
                     }
                 }
             }
