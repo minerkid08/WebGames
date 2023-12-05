@@ -214,6 +214,10 @@ try{
     globalFuncs["asin"] = Math.asin;
     globalFuncs["acos"] = Math.acos;
     globalFuncs["atan"] = Math.atan;
+    globalFuncs["abs"] = Math.abs;
+    globalFuncs["round"] = Math.round;
+    globalFuncs["ceil"] = Math.ceil;
+    globalFuncs["floor"] = Math.floor;
     let vars = new Object();
     function getVar(name){
         if(vars[name] != undefined){
