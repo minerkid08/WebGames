@@ -282,7 +282,7 @@ try{
 		}
 		event.preventDefault();
 	}catch(e){
-		this.alert(e + ", " + e.stack);
+		//this.alert(e + ", " + e.stack);
 	}
 	}, true);
 	
