@@ -166,10 +166,10 @@ try{
 			return; // Do nothing if the event was already processed
 		}
 		if(!lineClear){
+        	let didCollide = false;
 			switch (event.key) {
 				case "ArrowDown":
 				case "s":
-					let didCollide = false;
 					for(let i = 0; i < 8; i+=2){
 						if(grid[peice[i]+peicex][peice[i+1]+peicey+1] != 7){
 							didCollide = true;
@@ -217,7 +217,6 @@ try{
 					break;
 				case "ArrowLeft":
 				case "a":
-					let didCollide = false;
 					for(let i = 0; i < 8; i+=2){
 						if(grid[peice[i]+peicex-1][peice[i + 1]+peicey] != 7){
 							didCollide = true;
@@ -232,7 +231,6 @@ try{
 					break;
 				case "ArrowRight":
 				case "d":
-					let didCollide = false;
 					for(let i = 0; i < 8; i+=2){
 						if(grid[peice[i]+peicex+1][peice[i+1]+peicey] != 7){
 							didCollide = true;
