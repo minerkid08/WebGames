@@ -161,6 +161,7 @@ try{
 	//keyboard input
 	
 	window.addEventListener("keydown", function (event) {
+		try{
 		if (event.defaultPrevented) {
 			return; // Do nothing if the event was already processed
 		}
@@ -218,11 +219,11 @@ try{
 				case "a":
 					let didCollide = false;
 					for(let i = 0; i < 8; i+=2){
-						if(grid[peice[i]+peicex-1][peice[i+1]+peicey] != 7){
+						if(grid[peice[i]+peicex-1][peice[i + 1]+peicey] != 7){
 							didCollide = true;
 							break;
 						}
-						if(peice[i]+peicex <= 0){
+						if(peice[i] + peicex <= 0){
 							didCollide = true
 							break;
 						}
@@ -282,6 +283,9 @@ try{
 			// Cancel the default action to avoid it being handled twice
 		}
 		event.preventDefault();
+	}catch(e){
+		this.alert(e + ", " + e.stack);
+	}
 	}, true);
 	
 	//check collisions
