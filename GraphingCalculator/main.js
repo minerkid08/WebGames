@@ -204,19 +204,19 @@ try{
         return buf;
     }
     let globalVars = new Object();
-    globalVars["pi"] = Math.PI;
-    globalVars["e"] = Math.E;
+    globalVars["pi"]     = Math.PI;
+    globalVars["e"]      = Math.E;
     let globalFuncs = new Object();
-    globalFuncs["sqrt"] = Math.sqrt;
-    globalFuncs["sin"] = Math.sin;
-    globalFuncs["cos"] = Math.cos;
-    globalFuncs["tan"] = Math.tan;
-    globalFuncs["asin"] = Math.asin;
-    globalFuncs["acos"] = Math.acos;
-    globalFuncs["atan"] = Math.atan;
-    globalFuncs["abs"] = Math.abs;
+    globalFuncs["sqrt"]  = Math.sqrt;
+    globalFuncs["sin"]   = Math.sin;
+    globalFuncs["cos"]   = Math.cos;
+    globalFuncs["tan"]   = Math.tan;
+    globalFuncs["asin"]  = Math.asin;
+    globalFuncs["acos"]  = Math.acos;
+    globalFuncs["atan"]  = Math.atan;
+    globalFuncs["abs"]   = Math.abs;
     globalFuncs["round"] = Math.round;
-    globalFuncs["ceil"] = Math.ceil;
+    globalFuncs["ceil"]  = Math.ceil;
     globalFuncs["floor"] = Math.floor;
     let vars = new Object();
     function getVar(name){
