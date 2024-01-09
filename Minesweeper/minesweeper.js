@@ -383,7 +383,9 @@ class Game{
 			}
 		}
         input.draw();
-		document.getElementById("winCount").innerHTML = "win cout: " + document.cookie;
+		if(document.getElementById("winCount") != null){
+			document.getElementById("winCount").innerHTML = "win count: " + document.cookie;
+		}
 	}
 	mousePos(event){
 		this.x = event.clientX;
