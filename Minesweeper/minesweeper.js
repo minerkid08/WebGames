@@ -439,7 +439,7 @@ function drawGame(){
 	drawBoard();
 	game.draw();
 }
-document.onload = function(){
+addEventListener("load", (event) => {
 	if(document.cookie == ""){
 		document.cookie = 0;
 	}
@@ -448,7 +448,7 @@ document.onload = function(){
 	game.updateCount();
 	drawBoard();
 	game.draw();
-}
+});
 function drawBoard(){   
 	// canvas dims
 	const bw = box * gridSize;// box size
