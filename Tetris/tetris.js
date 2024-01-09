@@ -55,9 +55,6 @@ try{
 	let score = 0;
 	let scoreDiv = document.getElementById("score");
 	
-	let highScore = 0;
-	let highScoreDiv = document.getElementById("highScore");
-	
 	//random gen list
 	let list = [0,1,2,3,4,5,6];
 	
@@ -100,6 +97,12 @@ try{
 		}
 	}
 	
+	addEventListener("load", (event) => {
+		if(document.cookie == ""){
+			document.cookie = 0;
+		}
+	});
+
 	//draw things
 	draw();
 	function draw(){
@@ -138,6 +141,13 @@ try{
 		for(let i = 0; i < 8; i+=2){
 			heldCtx.fillRect((held[i]+1)*box,(held[i+1]+1)*box,box,box);
 		}
+    
+		let highScore = parseInt(document.cookie);
+		if(highScore < score){
+			document.cookie = score;
+		}
+
+		document.getElementById("highScore").innerHTML = "high score: " + document.cookie;
 	}
 	
 	//loop every 1/2 second
