@@ -112,6 +112,7 @@ class Game{
 		this.active = true;
 		this.win = false;
 		this.loose = false;
+        this.prevLoose = false;
 		this.grid = new Array(gridSize);
 		for(let x = 0; x < gridSize; x++){
 			this.grid[x] = new Array(gridSize);
@@ -290,6 +291,10 @@ class Game{
 			}
 			this.updateCount();
 		}
+		if(this.loose && !this.prevLoose){
+			this.prevLoose = true;
+            document.cookie = parseInt(document.cookie) - 1;
+		}
 	}
 	isDone(){
 		if(!this.loose){
@@ -423,12 +428,7 @@ class Game{
 		}
 	}
 }
-if(document.cookie == ""){
-	document.cookie = 0;
-}
-let game = new Game();
-game.start();
-game.updateCount();
+let game = null;
 function update(event){
 	game.mousePos(event);
     game.update();
@@ -439,8 +439,16 @@ function drawGame(){
 	drawBoard();
 	game.draw();
 }
-drawBoard();
-game.draw();
+document.onload = function(){
+	if(document.cookie == ""){
+		document.cookie = 0;
+	}
+	game = new Game();
+	game.start();
+	game.updateCount();
+	drawBoard();
+	game.draw();
+}
 function drawBoard(){   
 	// canvas dims
 	const bw = box * gridSize;// box size
