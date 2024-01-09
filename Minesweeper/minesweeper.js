@@ -421,7 +421,7 @@ class Game{
 		}
 	}
 }
-if(document.cookie.empty()){
+if(document.cookie == ""){
 	document.cookie = 0;
 }
 let game = new Game();
