@@ -301,6 +301,9 @@ class Game{
 					}
 				}
 			}
+			if(!this.win && c == gridSize * gridSize){
+				document.cookie = parseInt(document.cookie) + 1;
+			}
 			this.win = (c == gridSize * gridSize);
 			if(this.win){
 				this.revealMap();
@@ -380,6 +383,7 @@ class Game{
 			}
 		}
         input.draw();
+		document.getElementById("winCount").innerHTML = "win cout: " + document.cookie;
 	}
 	mousePos(event){
 		this.x = event.clientX;
@@ -416,6 +420,9 @@ class Game{
 			}
 		}
 	}
+}
+if(document.cookie.empty()){
+	document.cookie = 0;
 }
 let game = new Game();
 game.start();
