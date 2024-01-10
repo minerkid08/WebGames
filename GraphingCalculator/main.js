@@ -342,6 +342,11 @@ try{
             }
         }
     }
+    window.addEventListener("keydown", function(event){
+        if(event.key == "enter"){
+            update();
+        }
+    }, true);
 }catch(e){
     alert(":(");
     alert(e);
