@@ -26,7 +26,7 @@ let rule = Rules.triplets;
 function getCookie(){
 	return parseInt(document.cookie.split("=")[1]);
 }
-function setCokie(value){
+function setCookie(value){
 	document.cookie = "winCount=" + value;
 }
 
@@ -306,7 +306,7 @@ class Game{
 		}
 		if(this.loose && !this.prevLoose){
 			this.prevLoose = true;
-            setCokie(getCookie() - 1);
+            setCookie(getCookie() - 1);
 			alert("update cookie loose");
 		}
 	}
@@ -321,7 +321,7 @@ class Game{
 				}
 			}
 			if(!this.win && c == gridSize * gridSize){
-            	setCokie(getCookie() - 1);
+            	setCookie(getCookie() - 1);
                 alert("update cookie win");
 			}
 			this.win = (c == gridSize * gridSize);
@@ -404,7 +404,7 @@ class Game{
 		}
         input.draw();
 		if(document.getElementById("winCount") != null){
-			document.getElementById("winCount").innerHTML = "win count: " + document.cookie;
+			document.getElementById("winCount").innerHTML = "win count: " + getCookie();
 		}
 	}
 	mousePos(event){
