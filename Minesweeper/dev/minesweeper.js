@@ -272,6 +272,11 @@ class Game{
 												this.loose = true;
 												this.active = false;
 												this.revealMap();
+												if(this.loose && !this.prevLoose){
+													this.prevLoose = true;
+													setCookie(getCookie() - 1);
+													alert("update cookie loose");
+												}
 											}
 										}
 									}
@@ -304,11 +309,7 @@ class Game{
 			}
 			this.updateCount();
 		}
-		if(this.loose && !this.prevLoose){
-			this.prevLoose = true;
-            setCookie(getCookie() - 1);
-			alert("update cookie loose");
-		}
+		
 	}
 	isDone(){
 		if(!this.loose){
