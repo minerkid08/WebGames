@@ -327,7 +327,7 @@ class Game{
 				}
 			}
 			if(!this.win && c == gridSize * gridSize){
-            	setCookie(getCookie() - 1);
+            	setCookie(getCookie() + 1);
                 alert("update cookie win");
 			}
 			this.win = (c == gridSize * gridSize);
