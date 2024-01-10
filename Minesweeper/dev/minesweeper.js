@@ -292,6 +292,11 @@ class Game{
 				this.loose = true;
 				this.active = false;
 				this.revealMap();
+				if(this.loose && !this.prevLoose){
+					this.prevLoose = true;
+					setCookie(getCookie() - 1);
+					alert("update cookie loose");
+				}
 			}
 			this.pgrid[x][y] = this.grid[x][y];
 			if(this.pgrid[x][y] == 0){
