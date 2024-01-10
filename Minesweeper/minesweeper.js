@@ -129,7 +129,9 @@ class Game{
 		}
 		for(let i = 0; i < bombCount; i++){
 			let placed = false;
+			let iterCount = 0;
 			while(!placed){
+				iterCount++;
 				let x = Math.floor(Math.random() * gridSize);
 				let y = Math.floor(Math.random() * gridSize);
 				if(this.grid[x] == null){
@@ -158,6 +160,9 @@ class Game{
 								}
 							}
 						}
+					}
+					if(iterCount > 20){
+						return;
 					}
 					if(!hasTriplet){
 						placed = true;
