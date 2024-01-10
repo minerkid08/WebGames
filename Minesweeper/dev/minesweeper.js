@@ -22,6 +22,14 @@ const Cell = {
 	empty: Symbol("empty")
 }
 let rule = Rules.triplets;
+
+function getCookie(){
+	return parseInt(document.cookie.split("=")[1]);
+}
+function setCokie(value){
+	document.cookie = "winCount=" + value;
+}
+
 function setRule(i){
 	switch(i){
 		case 1:
@@ -298,8 +306,8 @@ class Game{
 		}
 		if(this.loose && !this.prevLoose){
 			this.prevLoose = true;
-            document.cookie = parseInt(document.cookie) - 1;
-			alert("update cookie loose");``
+            setCokie(getCookie() - 1);
+			alert("update cookie loose");
 		}
 	}
 	isDone(){
@@ -313,8 +321,8 @@ class Game{
 				}
 			}
 			if(!this.win && c == gridSize * gridSize){
-				document.cookie = parseInt(document.cookie) + 1;
-                alert("update cookie win");``
+            	setCokie(getCookie() - 1);
+                alert("update cookie win");
 			}
 			this.win = (c == gridSize * gridSize);
 			if(this.win){
@@ -447,8 +455,8 @@ function drawGame(){
 	game.draw();
 }
 addEventListener("load", (event) => {
-	if(document.cookie == ""){
-		document.cookie = 0;
+	if(!document.cookie.startsWith("winCount=")){
+		document.cookie = "winCount=0";
 	}
 	game = new Game();
 	game.start();
