@@ -34,12 +34,15 @@ try{
 		switch(i){
 			case 1:
 				rule = Rules.triplets;
+				document.getElementById("currentRule").innerHTML = "current rule: triplets";
 				break;
 			case 2:
 				rule = Rules.multiple;
+                document.getElementById("currentRule").innerHTML = "current rule: multiple";
 				break;
 			case 3:
 				rule = Rules.none;
+                document.getElementById("currentRule").innerHTML = "current rule: none";
 				break;
 		}
 		reset();
