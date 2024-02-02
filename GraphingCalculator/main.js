@@ -28,7 +28,7 @@ try{
             if(char == " "){
                 continue;
             }
-            if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^"){
+            if(char == "+" || char == "-" || char == "*" || char == "/" || char == "^" || char == "&" || char == "|"){
                 let term = new Expr();
                 term.expr = char;
                 terms[terms.length] = term;
@@ -176,6 +176,12 @@ try{
                 }
                 if(term.expr == "/"){
                     buf = buf / num;
+                }
+                if(term.expr == "&"){
+                    buf = buf & num;
+                }
+                if(term.expr == "|"){
+                    buf = buf | num;
                 }
                 if(term.expr == "^"){
                     buf = Math.pow(buf, num);
