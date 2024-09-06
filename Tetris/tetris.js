@@ -46,7 +46,7 @@ try{
 	
 	let board = document.getElementById("board");
 	let ctx = board.getContext("2d");
-	let box = 32;
+	let box = 25;
 	let width = 10;
 	let height = 20;
 	let active = true;
