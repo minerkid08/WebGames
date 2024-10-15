@@ -366,49 +366,27 @@ try{
 			}
 		}
 		if(b){
-			lineClear = true;
-			let a = false;
-			let id = window.setInterval(function(){
-				changed = false;
-				for(let y = 0; y < height; y++){
-					let filled = 0;
-					for(let x = 0; x < width; x++){
-						if(grid[x][y] != 7){
-							filled++;
-						}else{
-							break;
-						}
-					}
-					if(filled == width){
-						for(let my = y; my > 0; my--){
-							for(let mx = 0; mx < width; mx++){
-								grid[mx][my] = grid[mx][my-1];
-								grid[mx][my-1] = 7;
-							}
-						}
-						a = true;
-						score+=100;
-						changed = true;
+			for(let y = 0; y < height; y++){
+				let filled = 0;
+				for(let x = 0; x < width; x++){
+					if(grid[x][y] != 7){
+						filled++;
+					}else{
+						break;
 					}
 				}
-				if(a){
-					for(let x = 0; x < width; x++){
-						for(let y = height; y > 1; y--){
-							if(grid[x][y] == 7 && grid[x][y-1] != 7){
-								grid[x][y] = grid[x][y-1];
-								grid[x][y-1] = 7;
-								changed = true;
-							}
+				if(filled == width){
+					for(let my = y; my > 0; my--){
+						for(let mx = 0; mx < width; mx++){
+							grid[mx][my] = grid[mx][my-1];
+							grid[mx][my-1] = 7;
 						}
 					}
+					a = true;
+					score+=100;
 				}
-				draw();
-				if(!changed){
-					lineClear = false;
-					window.clearInterval(id);
-					return;
-				}
-			}, 250);
+			}
+			draw();
 		}
 	}
 
